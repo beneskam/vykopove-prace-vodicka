@@ -35,9 +35,9 @@ function getSlideTransform(diff: number): {
   const angle = diff * (360 / TOTAL)
   const rad = (angle * Math.PI) / 180
   const depth = Math.cos(rad)
-  const tx = Math.sin(rad) * RADIUS
-  const tz = (depth - 1) * 180
-  const scale = 0.6 + 0.4 * Math.max(0, depth)
+  const tx = Math.round(Math.sin(rad) * RADIUS * 1000) / 1000
+  const tz = Math.round((depth - 1) * 180 * 1000) / 1000
+  const scale = Math.round((0.6 + 0.4 * Math.max(0, depth)) * 1000) / 1000
   const absAngle = Math.abs(angle)
   const opacity = absAngle > 90 ? 0 : 0.25 + 0.75 * Math.max(0, depth)
   const zIndex = Math.round(100 + depth * 50)
