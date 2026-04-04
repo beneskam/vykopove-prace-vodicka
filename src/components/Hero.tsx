@@ -112,7 +112,7 @@ export default function Hero() {
             display: "inline-flex",
             alignItems: "center",
             gap: 10,
-            fontFamily: "'IBM Plex Mono', monospace",
+            fontFamily: "var(--font-ibm-plex-mono), monospace",
             fontSize: 11,
             color: "var(--mid-gray)",
             letterSpacing: "2.86px",
@@ -139,7 +139,6 @@ export default function Hero() {
         <h1
           style={{
             margin: 0,
-            fontFamily: "'Barlow', sans-serif', fontWeight: 800",
           }}
         >
           {[
@@ -160,7 +159,7 @@ export default function Hero() {
                 transition={{ duration: 0.8, delay, ease: EASE }}
                 style={{
                   display: "block",
-                  fontFamily: "'Barlow', sans-serif",
+                  fontFamily: "var(--font-barlow), sans-serif",
                   fontWeight: 800,
                   fontSize: "clamp(48px, 5.97vw, 86px)",
                   lineHeight: "0.92",
@@ -181,7 +180,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.55, ease: EASE }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "var(--font-dm-sans), sans-serif",
             fontWeight: 400,
             fontSize: 32,
             lineHeight: "28px",
@@ -219,7 +218,7 @@ export default function Hero() {
             >
               <span
                 style={{
-                  fontFamily: "'Syne', sans-serif",
+                  fontFamily: "var(--font-syne), sans-serif",
                   fontWeight: 800,
                   fontSize: 36,
                   color: "#FCDA01",
@@ -231,7 +230,7 @@ export default function Hero() {
               </span>
               <span
                 style={{
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "var(--font-dm-sans), sans-serif",
                   fontWeight: 500,
                   fontSize: 14,
                   color: "var(--dark)",
@@ -261,8 +260,8 @@ export default function Hero() {
             href="tel:+420777599092"
             style={{
               background: "var(--yellow)",
-              color: "var(--dark)",
-              fontFamily: "'Barlow Condensed', sans-serif",
+              color: "#1D252C",
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
               fontSize: 24,
               letterSpacing: "1.8px",
@@ -282,10 +281,12 @@ export default function Hero() {
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#e8c800";
               e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.color = "#1D252C";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "var(--yellow)";
               e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.color = "#1D252C";
             }}
           >
             <Image
@@ -301,7 +302,7 @@ export default function Hero() {
           <a
             href="#reference"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 500,
               fontSize: 17,
               color: "rgba(29,37,44,0.5)",

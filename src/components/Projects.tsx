@@ -38,7 +38,7 @@ export default function Projects() {
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontFamily: "'IBM Plex Mono', monospace", fontSize: 11,
+            fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11,
             color: 'var(--mid-gray)', letterSpacing: '2.86px',
             textTransform: 'uppercase', marginBottom: 16,
           }}>
@@ -46,7 +46,7 @@ export default function Projects() {
             Reference
           </div>
           <h2 style={{
-            fontFamily: "'Barlow', sans-serif", fontWeight: 800,
+            fontFamily: "var(--font-barlow), sans-serif", fontWeight: 800,
             fontSize: 'clamp(40px, 4.17vw, 60px)', lineHeight: '55.2px',
             letterSpacing: '-1.8px', textTransform: 'uppercase',
             color: 'var(--dark)', margin: 0,
@@ -70,7 +70,7 @@ export default function Projects() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id as 'firmy' | 'fyzicke')}
               style={{
-                fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 800,
+                fontFamily: "var(--font-barlow-condensed), sans-serif", fontWeight: 800,
                 fontSize: 13, letterSpacing: '1.4px', textTransform: 'uppercase',
                 color: activeTab === tab.id ? 'var(--dark)' : 'rgba(29,37,44,0.4)',
                 padding: '12px 28px', borderRadius: 10, cursor: 'pointer', border: 'none',
@@ -103,20 +103,20 @@ export default function Projects() {
                 onMouseEnter={(e) => { e.currentTarget.style.paddingLeft = '12px' }}
                 onMouseLeave={(e) => { e.currentTarget.style.paddingLeft = '0' }}
               >
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: '#a5a8ab', letterSpacing: '1.54px', minWidth: 36 }}>
+                <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11, color: '#a5a8ab', letterSpacing: '1.54px', minWidth: 36 }}>
                   {p.num}
                 </span>
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <p style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: '-0.18px', color: 'var(--dark)', margin: '0 0 4px' }}>{p.title}</p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'var(--mid-gray)', margin: 0 }}>{p.sub}</p>
+                  <p style={{ fontFamily: "var(--font-syne), sans-serif", fontWeight: 700, fontSize: 18, letterSpacing: '-0.18px', color: 'var(--dark)', margin: '0 0 4px' }}>{p.title}</p>
+                  <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: 13, color: 'var(--mid-gray)', margin: 0 }}>{p.sub}</p>
                 </div>
                 <span style={{
-                  fontFamily: "'IBM Plex Mono', monospace", fontSize: 10,
+                  fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 10,
                   letterSpacing: '1.4px', textTransform: 'uppercase',
                   padding: '6px 14px', background: p.badgeBg, color: p.badgeColor,
                   whiteSpace: 'nowrap', flexShrink: 0,
                 }}>{p.badge}</span>
-                <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: '#a5a8ab', minWidth: 80, textAlign: 'right', flexShrink: 0 }}>
+                <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11, color: '#a5a8ab', minWidth: 80, textAlign: 'right', flexShrink: 0 }}>
                   {p.year}
                 </span>
               </motion.div>
@@ -124,12 +124,12 @@ export default function Projects() {
 
             {/* Footer */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 32, marginTop: 8, flexWrap: 'wrap', gap: 16 }}>
-              <span style={{ fontFamily: "'IBM Plex Mono', monospace", fontSize: 11, color: 'var(--mid-gray)', letterSpacing: '1.54px', textTransform: 'uppercase' }}>
+              <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11, color: 'var(--mid-gray)', letterSpacing: '1.54px', textTransform: 'uppercase' }}>
                 Celkem {list.length} referenčních projektů zobrazeno
               </span>
               <a href="#kontakt" style={{
                 background: 'var(--dark)', color: '#fff',
-                fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 900,
+                fontFamily: "var(--font-barlow-condensed), sans-serif", fontWeight: 900,
                 fontSize: 15, letterSpacing: '1.8px', textTransform: 'uppercase',
                 padding: '16px 42px', borderRadius: 12, textDecoration: 'none',
                 display: 'inline-flex', alignItems: 'center',

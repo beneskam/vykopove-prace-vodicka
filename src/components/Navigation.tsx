@@ -8,7 +8,6 @@ const navLinks = [
   { href: '#sluzby', label: 'Služby' },
   { href: '#reference', label: 'Reference' },
   { href: '#galerie', label: 'Galerie' },
-  { href: '#technika', label: 'Technika' },
   { href: '#kontakt', label: 'Kontakt' },
 ]
 
@@ -20,7 +19,7 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
-      const sections = ['o-firme', 'sluzby', 'reference', 'galerie', 'technika', 'kontakt']
+      const sections = ['o-firme', 'sluzby', 'reference', 'galerie', 'kontakt']
       for (const id of sections.reverse()) {
         const el = document.getElementById(id)
         if (el && window.scrollY >= el.offsetTop - 100) {
@@ -61,7 +60,7 @@ export default function Navigation() {
           >
             <span
               style={{
-                fontFamily: "'Barlow Condensed', sans-serif",
+                fontFamily: "var(--font-barlow-condensed), sans-serif",
                 fontWeight: 900,
                 fontSize: 22,
                 color: 'var(--yellow)',
@@ -74,20 +73,19 @@ export default function Navigation() {
           <div className="flex flex-col gap-0.5">
             <span
               style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "var(--font-syne), sans-serif",
                 fontWeight: 800,
                 fontSize: 20,
-                color: 'var(--dark)',
-                letterSpacing: '-2.8px',
-                textTransform: 'uppercase',
-                lineHeight: 1,
+                color: '#1D252C',
+                letterSpacing: '0px',
+                lineHeight: '21px',
               }}
             >
-              Vodička
+              VODIČKA
             </span>
             <span
               style={{
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 9,
                 color: 'var(--mid-gray)',
                 letterSpacing: '1.44px',
@@ -106,7 +104,7 @@ export default function Navigation() {
               key={link.href}
               href={link.href}
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: active === link.href.slice(1) ? 700 : 500,
                 fontSize: 14,
                 color: active === link.href.slice(1) ? 'var(--dark)' : 'var(--mid-gray)',
@@ -128,7 +126,7 @@ export default function Navigation() {
           <a
             href="tel:+420777599092"
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 14,
               color: 'var(--dark)',
               textDecoration: 'none',
@@ -142,7 +140,7 @@ export default function Navigation() {
             style={{
               background: 'var(--yellow)',
               color: 'var(--dark)',
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
               fontSize: 14,
               letterSpacing: '1.56px',
@@ -215,7 +213,7 @@ export default function Navigation() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: 500,
                 fontSize: 16,
                 color: 'var(--dark)',
@@ -232,7 +230,7 @@ export default function Navigation() {
           <a
             href="tel:+420777599092"
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 15,
               color: 'var(--dark)',
               textDecoration: 'none',

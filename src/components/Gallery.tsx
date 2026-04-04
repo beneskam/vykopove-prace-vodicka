@@ -148,7 +148,7 @@ export default function Gallery() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 10,
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 11,
               color: 'var(--yellow)',
               letterSpacing: '2.86px',
@@ -161,7 +161,7 @@ export default function Gallery() {
           </div>
           <h2
             style={{
-              fontFamily: "'Barlow', sans-serif",
+              fontFamily: "var(--font-barlow), sans-serif",
               fontWeight: 800,
               fontSize: 'clamp(52px, 5.5vw, 80px)',
               lineHeight: 0.9,
@@ -180,7 +180,7 @@ export default function Gallery() {
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "var(--font-dm-sans), sans-serif",
             fontWeight: 300,
             fontSize: 16,
             lineHeight: 1.65,
@@ -365,7 +365,7 @@ export default function Gallery() {
         {/* Counter */}
         <span
           style={{
-            fontFamily: "'IBM Plex Mono', monospace",
+            fontFamily: "var(--font-ibm-plex-mono), monospace",
             fontSize: 12,
             color: 'rgba(255,255,255,0.3)',
             letterSpacing: '1.5px',
@@ -511,7 +511,7 @@ export default function Gallery() {
                 bottom: 32,
                 left: '50%',
                 transform: 'translateX(-50%)',
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 12,
                 color: 'rgba(255,255,255,0.3)',
                 letterSpacing: '2px',

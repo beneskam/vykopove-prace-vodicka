@@ -48,7 +48,7 @@ export default function Footer() {
               >
                 <span
                   style={{
-                    fontFamily: "'Barlow Condensed', sans-serif",
+                    fontFamily: "var(--font-barlow-condensed), sans-serif",
                     fontWeight: 900,
                     fontSize: 26,
                     color: 'var(--dark)',
@@ -60,7 +60,7 @@ export default function Footer() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <span
                   style={{
-                    fontFamily: "'Syne', sans-serif",
+                    fontFamily: "var(--font-syne), sans-serif",
                     fontWeight: 800,
                     fontSize: 20,
                     color: '#fff',
@@ -72,7 +72,7 @@ export default function Footer() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontFamily: "var(--font-ibm-plex-mono), monospace",
                     fontSize: 9,
                     color: 'rgba(255,255,255,0.3)',
                     letterSpacing: '1.4px',
@@ -85,7 +85,7 @@ export default function Footer() {
             </a>
             <p
               style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "var(--font-dm-sans), sans-serif",
                 fontSize: 15,
                 color: 'rgba(255,255,255,0.35)',
                 lineHeight: 1.65,
@@ -102,7 +102,7 @@ export default function Footer() {
           <div>
             <div
               style={{
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 10,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
@@ -129,7 +129,7 @@ export default function Footer() {
               >
                 <span
                   style={{
-                    fontFamily: "'IBM Plex Mono', monospace",
+                    fontFamily: "var(--font-ibm-plex-mono), monospace",
                     fontSize: 9,
                     color: 'rgba(255,255,255,0.2)',
                     letterSpacing: '1.8px',
@@ -142,7 +142,7 @@ export default function Footer() {
                   <a
                     href={item.href}
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "var(--font-dm-sans), sans-serif",
                       fontSize: 15,
                       color: 'rgba(255,255,255,0.6)',
                       textDecoration: 'none',
@@ -156,7 +156,7 @@ export default function Footer() {
                 ) : (
                   <span
                     style={{
-                      fontFamily: "'DM Sans', sans-serif",
+                      fontFamily: "var(--font-dm-sans), sans-serif",
                       fontSize: 15,
                       color: 'rgba(255,255,255,0.6)',
                     }}
@@ -172,7 +172,7 @@ export default function Footer() {
           <div>
             <div
               style={{
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 10,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
@@ -195,7 +195,7 @@ export default function Footer() {
                   key={link.href}
                   href={link.href}
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "var(--font-dm-sans), sans-serif",
                     fontSize: 15,
                     color: 'rgba(255,255,255,0.45)',
                     textDecoration: 'none',
@@ -214,7 +214,7 @@ export default function Footer() {
           <div>
             <div
               style={{
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 10,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
@@ -238,7 +238,7 @@ export default function Footer() {
                   key={service}
                   href="#sluzby"
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "var(--font-dm-sans), sans-serif",
                     fontSize: 15,
                     color: 'rgba(255,255,255,0.45)',
                     textDecoration: 'none',
@@ -267,7 +267,7 @@ export default function Footer() {
         >
           <span
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 10,
               color: 'rgba(255,255,255,0.2)',
               letterSpacing: '1px',
@@ -277,7 +277,7 @@ export default function Footer() {
           </span>
           <span
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 10,
               color: 'rgba(255,255,255,0.2)',
               letterSpacing: '1px',

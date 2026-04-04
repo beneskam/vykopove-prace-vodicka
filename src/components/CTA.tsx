@@ -30,7 +30,7 @@ export default function CTA() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 10,
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 12,
               color: 'rgba(29,37,44,0.5)',
               letterSpacing: '2.64px',
@@ -43,7 +43,7 @@ export default function CTA() {
           </div>
           <h2
             style={{
-              fontFamily: "'Barlow', sans-serif",
+              fontFamily: "var(--font-barlow), sans-serif",
               fontWeight: 800,
               fontSize: 'clamp(52px, 5.5vw, 72px)',
               lineHeight: 1.0,
@@ -74,7 +74,7 @@ export default function CTA() {
             style={{
               background: 'var(--dark)',
               color: '#fff',
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
               fontSize: 'clamp(15px, 1.4vw, 17px)',
               letterSpacing: '1.92px',
@@ -107,7 +107,7 @@ export default function CTA() {
             style={{
               border: '2px solid var(--dark)',
               color: 'var(--dark)',
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 600,
               fontSize: 16,
               padding: '18px 52px',
@@ -133,7 +133,7 @@ export default function CTA() {
 
           <p
             style={{
-              fontFamily: "'IBM Plex Mono', monospace",
+              fontFamily: "var(--font-ibm-plex-mono), monospace",
               fontSize: 13,
               color: 'rgba(29,37,44,0.5)',
               letterSpacing: '0.78px',

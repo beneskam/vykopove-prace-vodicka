@@ -29,7 +29,7 @@ export default function Stats() {
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontFamily: "'IBM Plex Mono', monospace", fontSize: 11,
+            fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11,
             color: 'rgba(255,255,255,0.3)', letterSpacing: '2.86px',
             textTransform: 'uppercase', marginBottom: 16,
           }}>
@@ -37,7 +37,7 @@ export default function Stats() {
             Zkušenost — každý výkop
           </div>
           <h2 style={{
-            fontFamily: "'Barlow', sans-serif",
+            fontFamily: "var(--font-barlow), sans-serif",
             fontWeight: 800,
             fontSize: 'clamp(40px, 4.17vw, 60px)',
             lineHeight: '55.2px',
@@ -65,14 +65,14 @@ export default function Stats() {
               style={{ padding: '40px 36px', background: 'var(--dark)', display: 'flex', flexDirection: 'column', gap: 8 }}
             >
               <span style={{
-                fontFamily: "'Syne', sans-serif", fontWeight: 800,
+                fontFamily: "var(--font-syne), sans-serif", fontWeight: 800,
                 fontSize: 'clamp(48px, 5vw, 72px)',
                 color: 'var(--yellow)', letterSpacing: '-2px', lineHeight: 1,
               }}>
                 {s.num}
-                {s.sup && <sup style={{ fontSize: '50%', fontFamily: "'Syne', sans-serif", fontWeight: 800 }}>{s.sup}</sup>}
+                {s.sup && <sup style={{ fontSize: '50%', fontFamily: "var(--font-syne), sans-serif", fontWeight: 800 }}>{s.sup}</sup>}
               </span>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55, margin: 0, maxWidth: 200 }}>
+              <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.55, margin: 0, maxWidth: 200 }}>
                 {s.label}
               </p>
             </motion.div>

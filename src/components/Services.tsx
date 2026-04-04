@@ -91,7 +91,7 @@ export default function Services() {
         >
           <SectionLabel text="Co provádíme" />
           <h2 style={{
-            fontFamily: "'Barlow', sans-serif",
+            fontFamily: "var(--font-barlow), sans-serif",
             fontWeight: 800,
             fontSize: 'clamp(40px, 4.17vw, 60px)',
             lineHeight: '55.2px',
@@ -103,7 +103,7 @@ export default function Services() {
             Naše<br />Služby
           </h2>
           <p style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "var(--font-dm-sans), sans-serif",
             fontWeight: 400,
             fontSize: 32,
             lineHeight: '28px',
@@ -121,7 +121,7 @@ export default function Services() {
               display: 'inline-flex',
               alignItems: 'center',
               gap: 8,
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 600,
               fontSize: 14,
               color: 'var(--dark)',
@@ -157,7 +157,7 @@ export default function Services() {
               onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)' }}
             >
               <span style={{
-                fontFamily: "'IBM Plex Mono', monospace",
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 11,
                 letterSpacing: '1.98px',
                 color: s.dark ? 'rgba(255,255,255,0.25)' : 'var(--mid-gray)',
@@ -166,7 +166,7 @@ export default function Services() {
               <s.Icon />
 
               <h3 style={{
-                fontFamily: "'Syne', sans-serif",
+                fontFamily: "var(--font-syne), sans-serif",
                 fontWeight: 700,
                 fontSize: 20,
                 letterSpacing: '-0.4px',
@@ -176,7 +176,7 @@ export default function Services() {
               }}>{s.title}</h3>
 
               <p style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: 300,
                 fontSize: 14,
                 lineHeight: '23.1px',
@@ -186,7 +186,7 @@ export default function Services() {
               }}>{s.desc}</p>
 
               <span style={{
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: 600,
                 fontSize: 13,
                 color: s.dark ? 'var(--yellow)' : 'var(--dark)',
@@ -205,7 +205,7 @@ function SectionLabel({ text, light }: { text: string; light?: boolean }) {
       display: 'inline-flex',
       alignItems: 'center',
       gap: 10,
-      fontFamily: "'IBM Plex Mono', monospace",
+      fontFamily: "var(--font-ibm-plex-mono), monospace",
       fontSize: 11,
       color: light ? 'var(--yellow)' : 'var(--mid-gray)',
       letterSpacing: '2.86px',

@@ -1,5 +1,42 @@
 import type { Metadata } from 'next'
+import { Syne, Barlow, Barlow_Condensed, DM_Sans, IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
+
+const syne = Syne({
+  subsets: ['latin'],
+  weight: ['700', '800'],
+  variable: '--font-syne',
+  display: 'swap',
+})
+
+const barlow = Barlow({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-barlow',
+  display: 'swap',
+})
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['700', '800', '900'],
+  variable: '--font-barlow-condensed',
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+})
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-ibm-plex-mono',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Vodička — Zemní & Výkopové Práce | Praha & Střední Čechy',
@@ -19,11 +56,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="cs" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
+    <html
+      lang="cs"
+      className={`scroll-smooth ${syne.variable} ${barlow.variable} ${barlowCondensed.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+    >
       <body className="antialiased">{children}</body>
     </html>
   )

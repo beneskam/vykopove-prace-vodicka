@@ -39,7 +39,7 @@ export default function Ticker() {
               gap: 24,
               paddingLeft: 32,
               paddingRight: 8,
-              fontFamily: "'Barlow Condensed', sans-serif",
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 800,
               fontSize: 15,
               color: 'var(--dark)',
@@ -52,7 +52,7 @@ export default function Ticker() {
               style={{
                 opacity: 0.3,
                 fontSize: 10,
-                fontFamily: "'Barlow Condensed', sans-serif",
+                fontFamily: "var(--font-barlow-condensed), sans-serif",
               }}
             >
               ◆

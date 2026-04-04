@@ -60,7 +60,7 @@ export default function Process() {
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontFamily: "'IBM Plex Mono', monospace", fontSize: 11,
+            fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 11,
             color: 'var(--mid-gray)', letterSpacing: '2.86px',
             textTransform: 'uppercase', marginBottom: 16,
           }}>
@@ -68,7 +68,7 @@ export default function Process() {
             Jak pracujeme
           </div>
           <h2 style={{
-            fontFamily: "'Barlow', sans-serif", fontWeight: 800,
+            fontFamily: "var(--font-barlow), sans-serif", fontWeight: 800,
             fontSize: 'clamp(40px, 4.17vw, 60px)', lineHeight: '55.2px',
             letterSpacing: '-1.8px', textTransform: 'uppercase',
             color: 'var(--dark)', margin: 0,
@@ -99,7 +99,7 @@ export default function Process() {
               {/* Background number */}
               <span style={{
                 position: 'absolute', top: 12, right: 20,
-                fontFamily: "'Syne', sans-serif", fontWeight: 800,
+                fontFamily: "var(--font-syne), sans-serif", fontWeight: 800,
                 fontSize: 88, color: 'rgba(29,37,44,0.05)',
                 lineHeight: 1, letterSpacing: '-3.2px',
                 pointerEvents: 'none', userSelect: 'none',
@@ -117,7 +117,7 @@ export default function Process() {
 
               {/* Title */}
               <h3 style={{
-                fontFamily: "'Syne', sans-serif", fontWeight: 700,
+                fontFamily: "var(--font-syne), sans-serif", fontWeight: 700,
                 fontSize: 18, letterSpacing: '-0.18px',
                 color: 'var(--dark)', margin: '0 0 12px',
                 lineHeight: 1.25,
@@ -125,7 +125,7 @@ export default function Process() {
 
               {/* Desc */}
               <p style={{
-                fontFamily: "'DM Sans', sans-serif", fontWeight: 300,
+                fontFamily: "var(--font-dm-sans), sans-serif", fontWeight: 300,
                 fontSize: 14, lineHeight: '23.1px',
                 color: '#4d5156', margin: 0,
               }}>{step.desc}</p>
