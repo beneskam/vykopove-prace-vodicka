@@ -8,7 +8,7 @@ const items = [
   'Terénní úpravy',
   'Zámkové dlažby',
   'Demolice',
-  'Praha & Střední Čechy',
+  'Praha a\u00A0Střední Čechy',
 ]
 
 export default function Ticker() {
@@ -41,7 +41,7 @@ export default function Ticker() {
               paddingRight: 8,
               fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 800,
-              fontSize: 15,
+              fontSize: 16,
               color: 'var(--dark)',
               letterSpacing: '2.1px',
               textTransform: 'uppercase',

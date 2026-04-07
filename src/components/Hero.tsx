@@ -182,16 +182,16 @@ export default function Hero() {
           style={{
             fontFamily: "var(--font-dm-sans), sans-serif",
             fontWeight: 400,
-            fontSize: 32,
-            lineHeight: "28px",
+            fontSize: 24,
+            lineHeight: "1.5",
             letterSpacing: 0,
             color: "#4d5156",
             margin: 0,
             maxWidth: 480,
           }}
         >
-          Profesionální zemní a výkopové práce, kanalizační přípojky a demolice.
-          Přes 20 let zkušeností na klíčových infrastrukturních projektech ČR.
+          Profesionální zemní a\u00A0výkopové práce, kanalizační přípojky a\u00A0demolice.
+          Přes 20 let zkušeností na\u00A0klíčových infrastrukturních projektech ČR.
         </motion.p>
 
         {/* Stats */}
@@ -209,8 +209,8 @@ export default function Hero() {
           }}
         >
           {[
-            { num: "20", label: "Let praxe" },
-            { num: "5", label: "Stát. projektů" },
+            { num: "20", sup: "+", label: "Let praxe" },
+            // { num: "5", label: "Stát. projektů" },
           ].map((s) => (
             <div
               key={s.label}
@@ -227,6 +227,11 @@ export default function Hero() {
                 }}
               >
                 {s.num}
+                {s.sup && (
+                  <sup style={{ fontSize: "0.55em", fontWeight: 800, letterSpacing: 0, lineHeight: 1, verticalAlign: "super" }}>
+                    {s.sup}
+                  </sup>
+                )}
               </span>
               <span
                 style={{
@@ -304,7 +309,7 @@ export default function Hero() {
             style={{
               fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 500,
-              fontSize: 17,
+              fontSize: 16,
               color: "rgba(29,37,44,0.5)",
               textDecoration: "none",
               borderBottom: "1px solid rgba(29,37,44,0.2)",

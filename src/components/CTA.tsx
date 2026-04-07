@@ -76,7 +76,7 @@ export default function CTA() {
               color: '#fff',
               fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
-              fontSize: 'clamp(15px, 1.4vw, 17px)',
+              fontSize: 16,
               letterSpacing: '1.92px',
               textTransform: 'uppercase',
               padding: '20px 52px',
@@ -134,7 +134,7 @@ export default function CTA() {
           <p
             style={{
               fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: 13,
+              fontSize: 12,
               color: 'rgba(29,37,44,0.5)',
               letterSpacing: '0.78px',
               textAlign: 'center',

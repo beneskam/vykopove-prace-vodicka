@@ -8,7 +8,7 @@ const stats = [
   { num: '20', sup: '+', label: 'Let zkušeností na náročných projektech' },
   { num: '5',  sup: '',  label: 'Státních infrastrukturních projektů' },
   { num: '4',  sup: '',  label: 'Profesionální stroje JCB v provozu' },
-  { num: '100',sup: '%', label: 'Dokončených zakázek včas a v rozpočtu' },
+  { num: '100',sup: '%', label: 'Dokončených zakázek včas a\u00A0v\u00A0rozpočtu' },
 ]
 
 export default function Stats() {

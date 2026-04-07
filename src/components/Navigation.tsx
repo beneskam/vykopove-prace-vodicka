@@ -86,13 +86,13 @@ export default function Navigation() {
             <span
               style={{
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: 9,
+                fontSize: 10,
                 color: 'var(--mid-gray)',
                 letterSpacing: '1.44px',
                 textTransform: 'uppercase',
               }}
             >
-              Zemní &amp; Výkopové Práce
+              Zemní a\u00A0Výkopové Práce
             </span>
           </div>
         </a>
@@ -131,8 +131,14 @@ export default function Navigation() {
               color: 'var(--dark)',
               textDecoration: 'none',
               letterSpacing: '0.5px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 7,
             }}
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--dark)" aria-hidden="true">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
             +420 777 599 092
           </a>
           <a
@@ -231,7 +237,7 @@ export default function Navigation() {
             href="tel:+420777599092"
             style={{
               fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: 15,
+              fontSize: 16,
               color: 'var(--dark)',
               textDecoration: 'none',
               padding: '12px 0',

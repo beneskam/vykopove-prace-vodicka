@@ -39,11 +39,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Vodička — Zemní & Výkopové Práce | Praha & Střední Čechy',
+  title: 'Zemní a výkopové práce Vodička',
   description: 'Profesionální zemní a výkopové práce, kanalizační přípojky a demolice. 20 let zkušeností na klíčových infrastrukturních projektech ČR. Praha a Střední Čechy.',
   keywords: 'zemní práce, výkopové práce, kanalizační přípojky, demolice, terénní úpravy, Praha, Střední Čechy, Vodička',
   openGraph: {
-    title: 'Vodička — Zemní & Výkopové Práce',
+    title: 'Vodička — Zemní a Výkopové Práce',
     description: 'Profesionální zemní a výkopové práce v Praze a Středočeském kraji. 20 let zkušeností, moderní technika JCB.',
     type: 'website',
     locale: 'cs_CZ',

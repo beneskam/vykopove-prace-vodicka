@@ -73,27 +73,27 @@ export default function Footer() {
                 <span
                   style={{
                     fontFamily: "var(--font-ibm-plex-mono), monospace",
-                    fontSize: 9,
+                    fontSize: 10,
                     color: 'rgba(255,255,255,0.3)',
                     letterSpacing: '1.4px',
                     textTransform: 'uppercase',
                   }}
                 >
-                  Zemní &amp; Výkopové Práce
+                  Zemní a\u00A0Výkopové Práce
                 </span>
               </div>
             </a>
             <p
               style={{
                 fontFamily: "var(--font-dm-sans), sans-serif",
-                fontSize: 15,
+                fontSize: 16,
                 color: 'rgba(255,255,255,0.35)',
                 lineHeight: 1.65,
                 margin: 0,
                 maxWidth: 280,
               }}
             >
-              Profesionální zemní a výkopové práce v Praze a Středočeském kraji.
+              Profesionální zemní a\u00A0výkopové práce v\u00A0Praze a\u00A0Středočeském kraji.
               20 let zkušeností, moderní technika JCB.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function Footer() {
             <div
               style={{
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: 10,
+                fontSize: 12,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
                 textTransform: 'uppercase',
@@ -115,7 +115,7 @@ export default function Footer() {
             {[
               { label: 'Telefon', val: '+420 777 599 092', href: 'tel:+420777599092' },
               { label: 'Email', val: 'petrvodas@seznam.cz', href: 'mailto:petrvodas@seznam.cz' },
-              { label: 'Oblast', val: 'Praha & Střední Čechy', href: null },
+              { label: 'Oblast', val: 'Praha a\u00A0Střední Čechy', href: null },
             ].map((item) => (
               <div
                 key={item.label}
@@ -130,7 +130,7 @@ export default function Footer() {
                 <span
                   style={{
                     fontFamily: "var(--font-ibm-plex-mono), monospace",
-                    fontSize: 9,
+                    fontSize: 10,
                     color: 'rgba(255,255,255,0.2)',
                     letterSpacing: '1.8px',
                     textTransform: 'uppercase',
@@ -143,7 +143,7 @@ export default function Footer() {
                     href={item.href}
                     style={{
                       fontFamily: "var(--font-dm-sans), sans-serif",
-                      fontSize: 15,
+                      fontSize: 16,
                       color: 'rgba(255,255,255,0.6)',
                       textDecoration: 'none',
                       transition: 'color 0.2s',
@@ -157,7 +157,7 @@ export default function Footer() {
                   <span
                     style={{
                       fontFamily: "var(--font-dm-sans), sans-serif",
-                      fontSize: 15,
+                      fontSize: 16,
                       color: 'rgba(255,255,255,0.6)',
                     }}
                   >
@@ -173,7 +173,7 @@ export default function Footer() {
             <div
               style={{
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: 10,
+                fontSize: 12,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
                 textTransform: 'uppercase',
@@ -196,7 +196,7 @@ export default function Footer() {
                   href={link.href}
                   style={{
                     fontFamily: "var(--font-dm-sans), sans-serif",
-                    fontSize: 15,
+                    fontSize: 16,
                     color: 'rgba(255,255,255,0.45)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',
@@ -215,7 +215,7 @@ export default function Footer() {
             <div
               style={{
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
-                fontSize: 10,
+                fontSize: 12,
                 color: 'var(--yellow)',
                 letterSpacing: '2.2px',
                 textTransform: 'uppercase',
@@ -239,7 +239,7 @@ export default function Footer() {
                   href="#sluzby"
                   style={{
                     fontFamily: "var(--font-dm-sans), sans-serif",
-                    fontSize: 15,
+                    fontSize: 16,
                     color: 'rgba(255,255,255,0.45)',
                     textDecoration: 'none',
                     transition: 'color 0.2s',

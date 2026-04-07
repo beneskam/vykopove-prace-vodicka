@@ -190,7 +190,7 @@ export default function Gallery() {
           }}
         >
           Dokumentace reálných projektů — od výkopů kanalizačních přípojek
-          po rozsáhlé terénní úpravy a demolice po celé Praze a Středočeském kraji.
+          po rozsáhlé terénní úpravy a\u00A0demolice po celé Praze a\u00A0Středočeském kraji.
         </motion.p>
       </Container>
 
