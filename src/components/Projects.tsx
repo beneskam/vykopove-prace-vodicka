@@ -79,6 +79,7 @@ export default function Projects() {
             display: 'flex', gap: 8,
             background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)',
             borderRadius: 14, padding: 5, width: 'fit-content', marginBottom: 40,
+            flexWrap: 'wrap',
           }}
         >
           {[{ id: 'fyzicke', label: 'Pro fyzické osoby' }, { id: 'firmy', label: 'Pro firmy' }].map(tab => (
@@ -113,6 +114,7 @@ export default function Projects() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.35, delay: i < INITIAL_COUNT ? i * 0.08 : (i - INITIAL_COUNT) * 0.07 }}
+                  className="project-row"
                   style={{
                     display: 'flex', alignItems: 'center',
                     padding: '32px 0', borderBottom: '1px solid #eeeff0',
@@ -121,20 +123,20 @@ export default function Projects() {
                   onMouseEnter={(e) => { e.currentTarget.style.paddingLeft = '12px' }}
                   onMouseLeave={(e) => { e.currentTarget.style.paddingLeft = '0' }}
                 >
-                  <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 12, color: '#a5a8ab', letterSpacing: '1.54px', minWidth: 36 }}>
+                  <span className="project-row-num" style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 12, color: '#a5a8ab', letterSpacing: '1.54px', minWidth: 36 }}>
                     {p.num}
                   </span>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <p style={{ fontFamily: "var(--font-syne), sans-serif", fontWeight: 700, fontSize: 24, letterSpacing: '-0.48px', color: 'var(--dark)', margin: '0 0 6px' }}>{p.title}</p>
-                    <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: 24, lineHeight: '1.5', color: 'var(--mid-gray)', margin: 0 }}>{p.sub}</p>
+                  <div className="project-row-body" style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontFamily: "var(--font-syne), sans-serif", fontWeight: 700, fontSize: 'clamp(16px, 2.2vw, 22px)', letterSpacing: '-0.3px', color: 'var(--dark)', margin: '0 0 4px' }}>{p.title}</p>
+                    <p style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: 'clamp(13px, 1.6vw, 16px)', lineHeight: '1.5', color: 'var(--mid-gray)', margin: 0 }}>{p.sub}</p>
                   </div>
-                  <span style={{
+                  <span className="project-row-badge" style={{
                     fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 10,
                     letterSpacing: '1.4px', textTransform: 'uppercase',
                     padding: '6px 14px', background: p.badgeBg, color: p.badgeColor,
                     whiteSpace: 'nowrap', flexShrink: 0,
                   }}>{p.badge}</span>
-                  <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 12, color: '#a5a8ab', minWidth: 80, textAlign: 'right', flexShrink: 0 }}>
+                  <span className="project-row-year" style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 12, color: '#a5a8ab', minWidth: 80, textAlign: 'right', flexShrink: 0 }}>
                     {p.year}
                   </span>
                 </motion.div>
@@ -142,7 +144,9 @@ export default function Projects() {
             </AnimatePresence>
 
             {/* Footer */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 32, marginTop: 8, flexWrap: 'wrap', gap: 16 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 32, marginTop: 8, flexWrap: 'wrap', gap: 16, flexDirection: 'column' }}
+              className="sm:flex-row!"
+            >
               <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 12, color: 'var(--mid-gray)', letterSpacing: '1.54px', textTransform: 'uppercase' }}>
                 {showAll ? `Celkem ${list.length} referenčních projektů` : `Zobrazeno ${INITIAL_COUNT} z ${list.length} projektů`}
               </span>

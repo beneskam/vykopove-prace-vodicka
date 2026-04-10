@@ -208,8 +208,8 @@ export default function Services() {
             style={{
               fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 400,
-              fontSize: 24,
-              lineHeight: "1.5",
+              fontSize: "clamp(16px, 2.5vw, 20px)",
+              lineHeight: "1.55",
               letterSpacing: 0,
               color: "#4d5156",
               margin: "0 0 32px",
@@ -242,6 +242,7 @@ export default function Services() {
         {/* Right: 2×2 card grid */}
         <div
           style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2 }}
+          className="grid-cols-1! sm:grid-cols-2!"
         >
           {services.map((s, i) => {
             const isDark = s.dark || hoveredCard === i;
@@ -253,7 +254,7 @@ export default function Services() {
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
                 style={{
                   background: isDark ? "var(--dark)" : "#f8f5ef",
-                  padding: "44px 40px",
+                  padding: "clamp(24px, 4vw, 44px) clamp(20px, 3.5vw, 40px)",
                   display: "flex",
                   flexDirection: "column",
                   gap: 20,
@@ -285,7 +286,7 @@ export default function Services() {
                   style={{
                     fontFamily: "var(--font-syne), sans-serif",
                     fontWeight: 700,
-                    fontSize: 24,
+                    fontSize: "clamp(18px, 2.5vw, 24px)",
                     letterSpacing: "-0.48px",
                     color: isDark ? "var(--yellow)" : "var(--dark)",
                     margin: 0,
@@ -300,8 +301,8 @@ export default function Services() {
                   style={{
                     fontFamily: "var(--font-dm-sans), sans-serif",
                     fontWeight: 400,
-                    fontSize: 24,
-                    lineHeight: "1.5",
+                    fontSize: "clamp(14px, 2vw, 18px)",
+                    lineHeight: "1.55",
                     letterSpacing: 0,
                     color: isDark ? "rgba(255,255,255,0.45)" : "#4d5156",
                     margin: 0,

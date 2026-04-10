@@ -18,7 +18,7 @@ export default function CTA() {
         overflow: 'hidden',
       }}
     >
-      <Container style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 48 }}>
+      <Container style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 48 }} className="flex-col! lg:flex-row!">
         {/* Left: heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -66,7 +66,9 @@ export default function CTA() {
             display: 'flex',
             flexDirection: 'column',
             gap: 16,
-            alignItems: 'flex-start',
+            alignItems: 'stretch',
+            width: '100%',
+            maxWidth: 360,
           }}
         >
           <a
@@ -79,16 +81,15 @@ export default function CTA() {
               fontSize: 16,
               letterSpacing: '1.92px',
               textTransform: 'uppercase',
-              padding: '20px 52px',
+              padding: '20px 32px',
               borderRadius: 12,
               textDecoration: 'none',
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: 10,
               transition: 'background 0.2s, transform 0.15s',
               border: '2px solid rgba(255,255,255,0.1)',
-              minWidth: 300,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#2a3540'
@@ -110,14 +111,13 @@ export default function CTA() {
               fontFamily: "var(--font-dm-sans), sans-serif",
               fontWeight: 600,
               fontSize: 16,
-              padding: '18px 52px',
+              padding: '18px 32px',
               borderRadius: 12,
               textDecoration: 'none',
-              display: 'inline-flex',
+              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               transition: 'background 0.2s, transform 0.15s',
-              minWidth: 300,
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(29,37,44,0.08)'

@@ -15,6 +15,7 @@ export default function Hero() {
     const el = parallaxRef.current;
     if (!el) return;
     const onScroll = () => {
+      if (window.innerWidth < 1024) return;
       el.style.transform = `translateY(${window.scrollY * 0.08}px)`;
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -24,6 +25,7 @@ export default function Hero() {
   return (
     <section
       id="o-firme"
+      className="hero-section"
       style={{
         marginTop: 72,
         height: "auto",
@@ -38,6 +40,7 @@ export default function Hero() {
       {/* ─────────── Machine — parallax outer + float+entrance inner ─────────── */}
       <div
         ref={parallaxRef}
+        className="hero-machine"
         style={{
           position: "absolute",
           top: 0,
@@ -80,7 +83,7 @@ export default function Hero() {
             src="/assets/hero-background.webp"
             alt="JCB 3CX Backhoe Loader — Zemní práce Vodička"
             fill
-            sizes="64vw"
+            sizes="(max-width: 1023px) 100vw, 64vw"
             style={{ objectFit: "contain", objectPosition: "top right" }}
             priority
           />
@@ -89,6 +92,7 @@ export default function Hero() {
 
       {/* ─────────── Text content ─────────── */}
       <div
+        className="hero-text"
         style={{
           position: "relative",
           zIndex: 2,
@@ -98,6 +102,7 @@ export default function Hero() {
           paddingLeft: "clamp(24px, 6.25vw, 100px)",
           paddingRight: "clamp(24px, 6.25vw, 100px)",
           paddingTop: "clamp(32px, 4vh, 60px)",
+          paddingBottom: "clamp(24px, 4vh, 48px)",
           display: "flex",
           flexDirection: "column",
           gap: 28,
@@ -182,8 +187,8 @@ export default function Hero() {
           style={{
             fontFamily: "var(--font-dm-sans), sans-serif",
             fontWeight: 400,
-            fontSize: 24,
-            lineHeight: "1.5",
+            fontSize: "clamp(16px, 2.5vw, 24px)",
+            lineHeight: "1.55",
             letterSpacing: 0,
             color: "#4d5156",
             margin: 0,
@@ -268,10 +273,10 @@ export default function Hero() {
               color: "#1D252C",
               fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
-              fontSize: 24,
+              fontSize: "clamp(16px, 3vw, 24px)",
               letterSpacing: "1.8px",
               textTransform: "uppercase",
-              padding: "18px 44px",
+              padding: "clamp(12px, 2.5vw, 18px) clamp(24px, 5vw, 44px)",
               borderRadius: 10,
               textDecoration: "none",
               display: "inline-flex",

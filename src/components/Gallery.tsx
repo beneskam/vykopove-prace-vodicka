@@ -27,15 +27,14 @@ const photos = [
 ]
 
 const TOTAL = photos.length
-const RADIUS = 560
 
-function getSlideTransform(diff: number): {
+function getSlideTransform(diff: number, radius: number): {
   tx: number; tz: number; scale: number; opacity: number; zIndex: number; filter: string
 } {
   const angle = diff * (360 / TOTAL)
   const rad = (angle * Math.PI) / 180
   const depth = Math.cos(rad)
-  const tx = Math.round(Math.sin(rad) * RADIUS * 1000) / 1000
+  const tx = Math.round(Math.sin(rad) * radius * 1000) / 1000
   const tz = Math.round((depth - 1) * 180 * 1000) / 1000
   const scale = Math.round((0.6 + 0.4 * Math.max(0, depth)) * 1000) / 1000
   const absAngle = Math.abs(angle)
@@ -46,10 +45,37 @@ function getSlideTransform(diff: number): {
   return { tx, tz, scale, opacity, zIndex, filter }
 }
 
+function useCarouselDimensions() {
+  const [dims, setDims] = useState({ radius: 560, slideW: 480, slideH: 360, sceneH: 480 })
+  useEffect(() => {
+    const calc = () => {
+      const vw = window.innerWidth
+      if (vw < 480) {
+        const w = Math.round(vw * 0.82)
+        const h = Math.round(w * 0.72)
+        setDims({ radius: Math.round(vw * 0.44), slideW: w, slideH: h, sceneH: h + 40 })
+      } else if (vw < 768) {
+        const w = Math.round(vw * 0.72)
+        const h = Math.round(w * 0.72)
+        setDims({ radius: Math.round(vw * 0.48), slideW: w, slideH: h, sceneH: h + 40 })
+      } else if (vw < 1024) {
+        setDims({ radius: 380, slideW: 380, slideH: 280, sceneH: 340 })
+      } else {
+        setDims({ radius: 560, slideW: 480, slideH: 360, sceneH: 480 })
+      }
+    }
+    calc()
+    window.addEventListener('resize', calc, { passive: true })
+    return () => window.removeEventListener('resize', calc)
+  }, [])
+  return dims
+}
+
 export default function Gallery() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [current, setCurrent] = useState(0)
+  const { radius, slideW, slideH, sceneH } = useCarouselDimensions()
   const [lightbox, setLightbox] = useState<number | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const dragStartX = useRef(0)
@@ -136,7 +162,7 @@ export default function Gallery() {
           position: 'relative',
           zIndex: 2,
         }}
-        className="!flex-col lg:!flex-row !items-start lg:!items-end !gap-6 lg:!gap-0"
+        className="flex-col! lg:flex-row! items-start! lg:items-end! gap-6! lg:gap-0!"
       >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -199,7 +225,7 @@ export default function Gallery() {
         ref={sceneRef}
         style={{
           position: 'relative',
-          height: 480,
+          height: sceneH,
           perspective: 1200,
           perspectiveOrigin: '50% 50%',
           cursor: 'grab',
@@ -237,7 +263,7 @@ export default function Gallery() {
             let diff = i - current
             if (diff > TOTAL / 2) diff -= TOTAL
             if (diff < -TOTAL / 2) diff += TOTAL
-            const { tx, tz, scale, opacity, zIndex, filter } = getSlideTransform(diff)
+            const { tx, tz, scale, opacity, zIndex, filter } = getSlideTransform(diff, radius)
             const isActive = diff === 0
 
             return (
@@ -249,12 +275,12 @@ export default function Gallery() {
                 }}
                 style={{
                   position: 'absolute',
-                  width: 480,
-                  height: 360,
+                  width: slideW,
+                  height: slideH,
                   left: '50%',
                   top: '50%',
-                  marginLeft: -240,
-                  marginTop: -180,
+                  marginLeft: -slideW / 2,
+                  marginTop: -slideH / 2,
                   transform: `translateX(${tx}px) translateZ(${tz}px) scale(${scale})`,
                   opacity,
                   zIndex,

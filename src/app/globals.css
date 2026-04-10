@@ -28,12 +28,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Global paragraph baseline (Figma spec: DM Sans Regular 32/28 0px) ── */
+/* ── Global paragraph baseline ── */
 p {
   font-family: var(--font-dm-sans), sans-serif;
   font-weight: 400;
-  font-size: 32px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 1.6;
   letter-spacing: 0px;
   margin: 0;
   color: var(--text-muted);
@@ -110,6 +110,50 @@ p {
 }
 .gallery-slide-inactive img {
   filter: brightness(0.6);
+}
+
+/* ── Hero responsive ── */
+@media (max-width: 1023px) {
+  .hero-section {
+    flex-direction: column !important;
+    padding-bottom: 0 !important;
+  }
+  .hero-machine {
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    height: clamp(220px, 72vw, 380px) !important;
+    will-change: auto !important;
+    margin-top: -24px;
+    order: 2;
+  }
+  .hero-text {
+    order: 1;
+  }
+}
+
+/* ── Project rows on mobile ── */
+@media (max-width: 767px) {
+  .project-row {
+    flex-wrap: wrap;
+    gap: 8px !important;
+    padding: 20px 0 !important;
+  }
+  .project-row-badge,
+  .project-row-year {
+    display: none !important;
+  }
+  .project-row-num {
+    display: none !important;
+  }
+  .project-row-body p:last-child {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+  .project-row-body p:first-child {
+    font-size: 18px !important;
+  }
 }
 
 /* Scrollbar */

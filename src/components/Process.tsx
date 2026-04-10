@@ -83,11 +83,14 @@ export default function Process() {
         </motion.div>
 
         {/* Right — steps grid */}
-        <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1,
-          background: 'rgba(255,255,255,0.06)',
-          border: '1px solid rgba(255,255,255,0.06)',
-        }}>
+        <div
+          style={{
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1,
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+          className="grid-cols-1! sm:grid-cols-2!"
+        >
           {steps.map((step, i) => {
             const isHovered = hoveredCard === i
             return (
@@ -100,7 +103,7 @@ export default function Process() {
                 onMouseLeave={() => setHoveredCard(null)}
                 style={{
                   background: isHovered ? 'rgba(255,255,255,0.06)' : 'var(--dark)',
-                  padding: '36px 32px',
+                  padding: 'clamp(20px, 3vw, 36px) clamp(16px, 2.5vw, 32px)',
                   position: 'relative',
                   overflow: 'hidden',
                   borderRadius: 10,
@@ -141,7 +144,7 @@ export default function Process() {
                 <div style={{ paddingRight: 56 }}>
                   <h3 style={{
                     fontFamily: "var(--font-syne), sans-serif", fontWeight: 700,
-                    fontSize: 24, letterSpacing: '-0.48px',
+                    fontSize: 'clamp(17px, 2.2vw, 24px)', letterSpacing: '-0.48px',
                     color: isHovered ? 'var(--yellow)' : '#fff',
                     margin: '0 0 8px',
                     lineHeight: 1.3, whiteSpace: 'pre-line',
@@ -150,7 +153,7 @@ export default function Process() {
 
                   <p style={{
                     fontFamily: "var(--font-dm-sans), sans-serif", fontWeight: 400,
-                    fontSize: 24, lineHeight: '1.5',
+                    fontSize: 'clamp(13px, 1.8vw, 16px)', lineHeight: '1.55',
                     color: isHovered ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.4)',
                     margin: 0,
                     transition: 'color 0.3s',
