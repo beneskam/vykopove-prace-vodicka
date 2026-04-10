@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import PoptavkaModal from './PoptavkaModal'
 
 const navLinks = [
   { href: '#o-firme', label: 'O firmě' },
@@ -15,6 +16,7 @@ export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('o-firme')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -141,8 +143,8 @@ export default function Navigation() {
             </svg>
             +420 777 599 092
           </a>
-          <a
-            href="#kontakt"
+          <button
+            onClick={() => setModalOpen(true)}
             style={{
               background: 'var(--yellow)',
               color: 'var(--dark)',
@@ -153,11 +155,11 @@ export default function Navigation() {
               textTransform: 'uppercase',
               padding: '11px 28px',
               borderRadius: 12,
-              textDecoration: 'none',
               display: 'inline-flex',
               alignItems: 'center',
               transition: 'background 0.2s, transform 0.1s',
               border: 'none',
+              cursor: 'pointer',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#e8c800'
@@ -169,7 +171,7 @@ export default function Navigation() {
             }}
           >
             Poptávka
-          </a>
+          </button>
         </div>
 
         {/* Mobile hamburger */}
@@ -245,8 +247,29 @@ export default function Navigation() {
           >
             +420 777 599 092
           </a>
+          <button
+            onClick={() => { setMenuOpen(false); setModalOpen(true) }}
+            style={{
+              background: 'var(--yellow)',
+              color: 'var(--dark)',
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
+              fontWeight: 900,
+              fontSize: 14,
+              letterSpacing: '1.56px',
+              textTransform: 'uppercase',
+              padding: '12px 0',
+              borderRadius: 12,
+              border: 'none',
+              cursor: 'pointer',
+              marginTop: 4,
+              width: '100%',
+            }}
+          >
+            Poptávka
+          </button>
         </div>
       </div>
+      {modalOpen && <PoptavkaModal onClose={() => setModalOpen(false)} />}
     </nav>
   )
 }
