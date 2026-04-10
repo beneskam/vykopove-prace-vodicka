@@ -19,7 +19,6 @@ export default function Home() {
         <Services />
         <Process />
         <Projects />
-        <Process />
         <Gallery />
         <CTA />
       </main>
