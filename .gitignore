@@ -42,3 +42,6 @@ next-env.d.ts
 
 # tokens
 tokens copy.txt
+
+# Local Netlify folder
+.netlify

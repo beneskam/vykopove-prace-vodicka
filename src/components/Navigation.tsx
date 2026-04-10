@@ -94,7 +94,7 @@ export default function Navigation() {
                 textTransform: 'uppercase',
               }}
             >
-              Zemní a\u00A0Výkopové Práce
+              Zemní a{'\u00A0'}Výkopové Práce
             </span>
           </div>
         </a>

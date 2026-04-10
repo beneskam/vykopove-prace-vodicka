@@ -51,6 +51,7 @@ export default function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
           style={{ marginBottom: 48 }}
+          className="section-heading-block flex! flex-col!"
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,

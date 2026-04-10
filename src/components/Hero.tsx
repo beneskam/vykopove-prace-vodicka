@@ -90,12 +90,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
+      {/* Gradient overlay — only visible on mobile via CSS */}
+      <div className="hero-gradient" aria-hidden="true" />
+
       {/* ─────────── Text content ─────────── */}
       <div
         className="hero-text"
         style={{
           position: "relative",
-          zIndex: 2,
+          zIndex: 3,
           width: "100%",
           maxWidth: 1440,
           margin: "0 auto",
@@ -106,6 +109,7 @@ export default function Hero() {
           display: "flex",
           flexDirection: "column",
           gap: 28,
+          alignItems: "flex-start",
         }}
       >
         {/* Eyebrow
@@ -195,8 +199,8 @@ export default function Hero() {
             maxWidth: 480,
           }}
         >
-          Profesionální zemní a\u00A0výkopové práce, kanalizační přípojky a\u00A0demolice.
-          Přes 20 let zkušeností na\u00A0klíčových infrastrukturních projektech ČR.
+          Profesionální zemní a{'\u00A0'}výkopové práce, kanalizační přípojky a{'\u00A0'}demolice.{' '}
+          Přes 20 let zkušeností na{'\u00A0'}klíčových infrastrukturních projektech ČR.
         </motion.p>
 
         {/* Stats */}
@@ -204,6 +208,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7, ease: EASE }}
+          className="hero-stats"
           style={{
             borderTop: "1px solid rgba(29,37,44,0.15)",
             paddingTop: 22,
@@ -211,6 +216,7 @@ export default function Hero() {
             gap: 48,
             alignItems: "flex-start",
             flexWrap: "wrap",
+            width: "100%",
           }}
         >
           {[
@@ -259,6 +265,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85, ease: EASE }}
+          className="hero-cta"
           style={{
             display: "flex",
             alignItems: "center",

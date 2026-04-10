@@ -62,6 +62,7 @@ export default function Process() {
           initial={{ opacity: 0, x: -30 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.7 }}
+          className="section-heading-block flex! flex-col!"
         >
           <div style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -116,7 +117,7 @@ export default function Process() {
                 }}
               >
                 {/* Background number */}
-                <span style={{
+                <span className="process-bg-num" style={{
                   position: 'absolute', top: 12, right: 16,
                   fontFamily: "var(--font-syne), sans-serif", fontWeight: 800,
                   fontSize: 64, color: 'transparent',

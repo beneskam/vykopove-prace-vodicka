@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 72px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -115,21 +116,67 @@ p {
 /* ── Hero responsive ── */
 @media (max-width: 1023px) {
   .hero-section {
-    flex-direction: column !important;
     padding-bottom: 0 !important;
+    min-height: clamp(480px, 130vw, 680px);
   }
   .hero-machine {
-    position: relative !important;
-    right: auto !important;
-    top: auto !important;
-    width: 100% !important;
-    height: clamp(220px, 72vw, 380px) !important;
+    /* stays absolute, but fills the section and shifts right/down */
+    width: 110% !important;
+    height: 100% !important;
+    right: -10% !important;
+    top: 0 !important;
     will-change: auto !important;
-    margin-top: -24px;
-    order: 2;
+    opacity: 0.35;
+  }
+  .hero-gradient {
+    display: block !important;
   }
   .hero-text {
-    order: 1;
+    align-items: flex-start !important;
+    padding-bottom: clamp(40px, 8vw, 64px) !important;
+  }
+  .hero-stats {
+    justify-content: flex-start !important;
+  }
+  .hero-cta {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* Hero gradient overlay — hidden on desktop, shown on mobile via .hero-gradient */
+.hero-gradient {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0) 100%),
+    linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 20%, rgba(255,255,255,0) 50%);
+}
+
+/* ── Mobile section heading centering ── */
+@media (max-width: 1023px) {
+  .section-heading-block {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .section-heading-block h2,
+  .section-heading-block p {
+    text-align: center !important;
+  }
+  .section-heading-block .section-label,
+  .section-heading-block > div:first-child {
+    justify-content: center !important;
+  }
+}
+
+/* ── Process card bg number responsive ── */
+@media (max-width: 767px) {
+  .process-bg-num {
+    font-size: 36px !important;
+    top: 8px !important;
+    right: 10px !important;
   }
 }
 

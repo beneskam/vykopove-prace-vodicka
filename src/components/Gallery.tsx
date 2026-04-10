@@ -27,6 +27,7 @@ const photos = [
 ]
 
 const TOTAL = photos.length
+const RADIUS = 560
 
 function getSlideTransform(diff: number, radius: number): {
   tx: number; tz: number; scale: number; opacity: number; zIndex: number; filter: string
@@ -45,37 +46,22 @@ function getSlideTransform(diff: number, radius: number): {
   return { tx, tz, scale, opacity, zIndex, filter }
 }
 
-function useCarouselDimensions() {
-  const [dims, setDims] = useState({ radius: 560, slideW: 480, slideH: 360, sceneH: 480 })
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false)
   useEffect(() => {
-    const calc = () => {
-      const vw = window.innerWidth
-      if (vw < 480) {
-        const w = Math.round(vw * 0.82)
-        const h = Math.round(w * 0.72)
-        setDims({ radius: Math.round(vw * 0.44), slideW: w, slideH: h, sceneH: h + 40 })
-      } else if (vw < 768) {
-        const w = Math.round(vw * 0.72)
-        const h = Math.round(w * 0.72)
-        setDims({ radius: Math.round(vw * 0.48), slideW: w, slideH: h, sceneH: h + 40 })
-      } else if (vw < 1024) {
-        setDims({ radius: 380, slideW: 380, slideH: 280, sceneH: 340 })
-      } else {
-        setDims({ radius: 560, slideW: 480, slideH: 360, sceneH: 480 })
-      }
-    }
-    calc()
-    window.addEventListener('resize', calc, { passive: true })
-    return () => window.removeEventListener('resize', calc)
+    const check = () => setMobile(window.innerWidth < 1024)
+    check()
+    window.addEventListener('resize', check, { passive: true })
+    return () => window.removeEventListener('resize', check)
   }, [])
-  return dims
+  return mobile
 }
 
 export default function Gallery() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const [current, setCurrent] = useState(0)
-  const { radius, slideW, slideH, sceneH } = useCarouselDimensions()
+  const isMobile = useIsMobile()
   const [lightbox, setLightbox] = useState<number | null>(null)
   const [isDragging, setIsDragging] = useState(false)
   const dragStartX = useRef(0)
@@ -168,6 +154,7 @@ export default function Gallery() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
+          className="section-heading-block flex! flex-col!"
         >
           <div
             style={{
@@ -216,198 +203,263 @@ export default function Gallery() {
           }}
         >
           Dokumentace reálných projektů — od výkopů kanalizačních přípojek
-          po rozsáhlé terénní úpravy a\u00A0demolice po celé Praze a\u00A0Středočeském kraji.
+          po rozsáhlé terénní úpravy a{'\u00A0'}demolice po celé Praze a{'\u00A0'}Středočeském kraji.
         </motion.p>
       </Container>
 
-      {/* 3D Carousel */}
-      <div
-        ref={sceneRef}
-        style={{
-          position: 'relative',
-          height: sceneH,
-          perspective: 1200,
-          perspectiveOrigin: '50% 50%',
-          cursor: 'grab',
-        }}
-        onMouseEnter={stopAutoplay}
-        onMouseLeave={() => { if (!isDragging) startAutoplay() }}
-        onMouseDown={(e) => {
-          setIsDragging(true)
-          dragStartX.current = e.clientX
-        }}
-        onMouseUp={(e) => {
-          if (!isDragging) return
-          setIsDragging(false)
-          const delta = e.clientX - dragStartX.current
-          if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
-          startAutoplay()
-        }}
-        onMouseMove={(e) => {
-          if (isDragging) e.preventDefault()
-        }}
-        onTouchStart={(e) => {
-          dragStartX.current = e.touches[0].clientX
-        }}
-        onTouchEnd={(e) => {
-          const delta = e.changedTouches[0].clientX - dragStartX.current
-          if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
-        }}
-        onWheel={(e) => {
-          if (e.deltaX > 20 || e.deltaY > 20) next()
-          else if (e.deltaX < -20 || e.deltaY < -20) prev()
-        }}
-      >
-        <div style={{ position: 'absolute', width: '100%', height: '100%', transformStyle: 'preserve-3d' }}>
-          {photos.map((photo, i) => {
-            let diff = i - current
-            if (diff > TOTAL / 2) diff -= TOTAL
-            if (diff < -TOTAL / 2) diff += TOTAL
-            const { tx, tz, scale, opacity, zIndex, filter } = getSlideTransform(diff, radius)
-            const isActive = diff === 0
-
-            return (
-              <div
-                key={photo.src}
-                onClick={() => {
-                  if (isActive) setLightbox(i)
-                  else goTo(i)
-                }}
-                style={{
-                  position: 'absolute',
-                  width: slideW,
-                  height: slideH,
-                  left: '50%',
-                  top: '50%',
-                  marginLeft: -slideW / 2,
-                  marginTop: -slideH / 2,
-                  transform: `translateX(${tx}px) translateZ(${tz}px) scale(${scale})`,
-                  opacity,
-                  zIndex,
-                  filter,
-                  transition: 'transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease, filter 0.5s ease',
-                  cursor: isActive ? 'zoom-in' : 'pointer',
-                  userSelect: 'none',
-                  pointerEvents: Math.abs(diff) > 4 ? 'none' : 'auto',
-                }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={photo.src}
-                  alt={photo.caption}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  loading="lazy"
-                  draggable={false}
-                />
-                {/* Frame */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    border: `1px solid ${isActive ? 'rgba(252,218,1,0.6)' : 'rgba(252,218,1,0.12)'}`,
-                    boxShadow: isActive ? '0 0 40px rgba(252,218,1,0.12), 0 20px 60px rgba(0,0,0,0.6)' : 'none',
-                    transition: 'border-color 0.4s, box-shadow 0.4s',
-                    pointerEvents: 'none',
-                  }}
-                />
-                {/* Corner accents on active */}
-                {isActive && (
-                  <>
-                    <div style={{ position: 'absolute', top: -1, left: -1, width: 20, height: 20, borderTop: '2px solid var(--yellow)', borderLeft: '2px solid var(--yellow)' }} />
-                    <div style={{ position: 'absolute', bottom: -1, right: -1, width: 20, height: 20, borderBottom: '2px solid var(--yellow)', borderRight: '2px solid var(--yellow)' }} />
-                  </>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Controls */}
-      <Container
-        style={{
-          marginTop: 48,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 24,
-          position: 'relative',
-          zIndex: 2,
-        }}
-      >
-        {[prev, next].map((fn, i) => (
-          <button
-            key={i}
-            onClick={fn}
-            style={{
-              width: 52,
-              height: 52,
-              background: 'rgba(255,255,255,0.06)',
-              border: '1px solid rgba(255,255,255,0.12)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              color: '#fff',
-              fontSize: 22,
-              flexShrink: 0,
-              transition: 'background 0.2s, border-color 0.2s, color 0.2s',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'var(--yellow)'
-              e.currentTarget.style.borderColor = 'var(--yellow)'
-              e.currentTarget.style.color = 'var(--dark)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
-              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'
-              e.currentTarget.style.color = '#fff'
-            }}
-            aria-label={i === 0 ? 'Předchozí' : 'Další'}
-          >
-            {i === 0 ? '←' : '→'}
-          </button>
-        ))}
-
-        {/* Dots */}
-        <div style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap' }}>
-          {photos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              style={{
-                width: i === current ? 48 : 24,
-                height: 2,
-                background: i === current ? 'var(--yellow)' : 'rgba(255,255,255,0.15)',
-                border: 'none',
-                cursor: 'pointer',
-                padding: 0,
-                transition: 'width 0.3s, background 0.3s',
-              }}
-              aria-label={`Foto ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Counter */}
-        <span
-          style={{
-            fontFamily: "var(--font-ibm-plex-mono), monospace",
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.3)',
-            letterSpacing: '1.5px',
-            minWidth: 60,
-            textAlign: 'right',
-            flexShrink: 0,
+      {/* ── MOBILE: simple full-width swipe slider ── */}
+      {isMobile ? (
+        <div
+          style={{ position: 'relative', zIndex: 2 }}
+          onTouchStart={(e) => {
+            dragStartX.current = e.touches[0].clientX
+            stopAutoplay()
+          }}
+          onTouchEnd={(e) => {
+            const delta = e.changedTouches[0].clientX - dragStartX.current
+            if (Math.abs(delta) > 40) delta > 0 ? prev() : next()
+            startAutoplay()
           }}
         >
-          <strong style={{ color: 'rgba(255,255,255,0.7)' }}>
-            {String(current + 1).padStart(2, '0')}
-          </strong>{' '}
-          / {String(TOTAL).padStart(2, '0')}
-        </span>
-      </Container>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setLightbox(current)}
+              style={{
+                marginLeft: 'clamp(16px, 5vw, 40px)',
+                marginRight: 'clamp(16px, 5vw, 40px)',
+                aspectRatio: '4/3',
+                position: 'relative',
+                cursor: 'zoom-in',
+                borderRadius: 4,
+                overflow: 'hidden',
+                border: '1px solid rgba(252,218,1,0.5)',
+                boxShadow: '0 0 40px rgba(252,218,1,0.1), 0 20px 60px rgba(0,0,0,0.6)',
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={photos[current].src}
+                alt={photos[current].caption}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                draggable={false}
+              />
+              {/* Corner accents */}
+              <div style={{ position: 'absolute', top: 0, left: 0, width: 20, height: 20, borderTop: '2px solid var(--yellow)', borderLeft: '2px solid var(--yellow)' }} />
+              <div style={{ position: 'absolute', bottom: 0, right: 0, width: 20, height: 20, borderBottom: '2px solid var(--yellow)', borderRight: '2px solid var(--yellow)' }} />
+            </motion.div>
+          </AnimatePresence>
 
-      {/* Lightbox */}
+          {/* Mobile controls */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px clamp(16px, 5vw, 40px) 0' }}>
+            <button
+              onClick={prev}
+              style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', fontSize: 20, cursor: 'pointer', borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+              aria-label="Předchozí"
+            >←</button>
+
+            <span style={{ fontFamily: "var(--font-ibm-plex-mono), monospace", fontSize: 13, color: 'rgba(255,255,255,0.4)', letterSpacing: '1px' }}>
+              <strong style={{ color: 'rgba(255,255,255,0.8)' }}>{String(current + 1).padStart(2, '0')}</strong>
+              {' / '}{String(TOTAL).padStart(2, '0')}
+            </span>
+
+            <button
+              onClick={next}
+              style={{ width: 44, height: 44, background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#fff', fontSize: 20, cursor: 'pointer', borderRadius: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}
+              aria-label="Další"
+            >→</button>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* ── DESKTOP: 3D Carousel ── */}
+          <div
+            ref={sceneRef}
+            style={{
+              position: 'relative',
+              height: 480,
+              perspective: 1200,
+              perspectiveOrigin: '50% 50%',
+              cursor: 'grab',
+            }}
+            onMouseEnter={stopAutoplay}
+            onMouseLeave={() => { if (!isDragging) startAutoplay() }}
+            onMouseDown={(e) => {
+              setIsDragging(true)
+              dragStartX.current = e.clientX
+            }}
+            onMouseUp={(e) => {
+              if (!isDragging) return
+              setIsDragging(false)
+              const delta = e.clientX - dragStartX.current
+              if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
+              startAutoplay()
+            }}
+            onMouseMove={(e) => {
+              if (isDragging) e.preventDefault()
+            }}
+            onTouchStart={(e) => {
+              dragStartX.current = e.touches[0].clientX
+            }}
+            onTouchEnd={(e) => {
+              const delta = e.changedTouches[0].clientX - dragStartX.current
+              if (Math.abs(delta) > 50) delta > 0 ? prev() : next()
+            }}
+            onWheel={(e) => {
+              if (e.deltaX > 20 || e.deltaY > 20) next()
+              else if (e.deltaX < -20 || e.deltaY < -20) prev()
+            }}
+          >
+            <div style={{ position: 'absolute', width: '100%', height: '100%', transformStyle: 'preserve-3d' }}>
+              {photos.map((photo, i) => {
+                let diff = i - current
+                if (diff > TOTAL / 2) diff -= TOTAL
+                if (diff < -TOTAL / 2) diff += TOTAL
+                const { tx, tz, scale, opacity, zIndex, filter } = getSlideTransform(diff, RADIUS)
+                const isActive = diff === 0
+
+                return (
+                  <div
+                    key={photo.src}
+                    onClick={() => {
+                      if (isActive) setLightbox(i)
+                      else goTo(i)
+                    }}
+                    style={{
+                      position: 'absolute',
+                      width: 480,
+                      height: 360,
+                      left: '50%',
+                      top: '50%',
+                      marginLeft: -240,
+                      marginTop: -180,
+                      transform: `translateX(${tx}px) translateZ(${tz}px) scale(${scale})`,
+                      opacity,
+                      zIndex,
+                      filter,
+                      transition: 'transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94), opacity 0.5s ease, filter 0.5s ease',
+                      cursor: isActive ? 'zoom-in' : 'pointer',
+                      userSelect: 'none',
+                      pointerEvents: Math.abs(diff) > 4 ? 'none' : 'auto',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={photo.src}
+                      alt={photo.caption}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      loading="lazy"
+                      draggable={false}
+                    />
+                    <div
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        border: `1px solid ${isActive ? 'rgba(252,218,1,0.6)' : 'rgba(252,218,1,0.12)'}`,
+                        boxShadow: isActive ? '0 0 40px rgba(252,218,1,0.12), 0 20px 60px rgba(0,0,0,0.6)' : 'none',
+                        transition: 'border-color 0.4s, box-shadow 0.4s',
+                        pointerEvents: 'none',
+                      }}
+                    />
+                    {isActive && (
+                      <>
+                        <div style={{ position: 'absolute', top: -1, left: -1, width: 20, height: 20, borderTop: '2px solid var(--yellow)', borderLeft: '2px solid var(--yellow)' }} />
+                        <div style={{ position: 'absolute', bottom: -1, right: -1, width: 20, height: 20, borderBottom: '2px solid var(--yellow)', borderRight: '2px solid var(--yellow)' }} />
+                      </>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Desktop Controls */}
+          <Container
+            style={{
+              marginTop: 48,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 24,
+              position: 'relative',
+              zIndex: 2,
+            }}
+          >
+            {[prev, next].map((fn, i) => (
+              <button
+                key={i}
+                onClick={fn}
+                style={{
+                  width: 52,
+                  height: 52,
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: '#fff',
+                  fontSize: 22,
+                  flexShrink: 0,
+                  transition: 'background 0.2s, border-color 0.2s, color 0.2s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'var(--yellow)'
+                  e.currentTarget.style.borderColor = 'var(--yellow)'
+                  e.currentTarget.style.color = 'var(--dark)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'
+                  e.currentTarget.style.color = '#fff'
+                }}
+                aria-label={i === 0 ? 'Předchozí' : 'Další'}
+              >
+                {i === 0 ? '←' : '→'}
+              </button>
+            ))}
+            <div style={{ display: 'flex', gap: 6, flex: 1, flexWrap: 'wrap' }}>
+              {photos.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  style={{
+                    width: i === current ? 48 : 24,
+                    height: 2,
+                    background: i === current ? 'var(--yellow)' : 'rgba(255,255,255,0.15)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                    transition: 'width 0.3s, background 0.3s',
+                  }}
+                  aria-label={`Foto ${i + 1}`}
+                />
+              ))}
+            </div>
+            <span
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono), monospace",
+                fontSize: 12,
+                color: 'rgba(255,255,255,0.3)',
+                letterSpacing: '1.5px',
+                minWidth: 60,
+                textAlign: 'right',
+                flexShrink: 0,
+              }}
+            >
+              <strong style={{ color: 'rgba(255,255,255,0.7)' }}>
+                {String(current + 1).padStart(2, '0')}
+              </strong>{' '}
+              / {String(TOTAL).padStart(2, '0')}
+            </span>
+          </Container>
+        </>
+      )}
+
+      {/* ── Lightbox ── */}
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
@@ -416,6 +468,13 @@ export default function Gallery() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={(e) => e.target === e.currentTarget && setLightbox(null)}
+            onTouchStart={(e) => { dragStartX.current = e.touches[0].clientX }}
+            onTouchEnd={(e) => {
+              const delta = e.changedTouches[0].clientX - dragStartX.current
+              if (Math.abs(delta) > 40) {
+                setLightbox((l) => l !== null ? (delta > 0 ? (l - 1 + TOTAL) % TOTAL : (l + 1) % TOTAL) : null)
+              }
+            }}
             style={{
               position: 'fixed',
               inset: 0,
@@ -425,6 +484,7 @@ export default function Gallery() {
               alignItems: 'center',
               justifyContent: 'center',
               backdropFilter: 'blur(8px)',
+              padding: '60px 16px 24px',
             }}
           >
             <motion.img
@@ -436,10 +496,13 @@ export default function Gallery() {
               src={photos[lightbox].src}
               alt={photos[lightbox].caption}
               style={{
-                maxWidth: '90vw',
-                maxHeight: '90vh',
+                maxWidth: '100%',
+                maxHeight: '100%',
+                width: 'auto',
+                height: 'auto',
                 objectFit: 'contain',
                 boxShadow: '0 40px 120px rgba(0,0,0,0.8)',
+                display: 'block',
               }}
               draggable={false}
             />
@@ -449,10 +512,10 @@ export default function Gallery() {
               onClick={() => setLightbox(null)}
               style={{
                 position: 'absolute',
-                top: 32,
-                right: 40,
-                width: 48,
-                height: 48,
+                top: 16,
+                right: 16,
+                width: 44,
+                height: 44,
                 background: 'rgba(255,255,255,0.06)',
                 border: '1px solid rgba(255,255,255,0.1)',
                 display: 'flex',
@@ -462,33 +525,26 @@ export default function Gallery() {
                 color: '#fff',
                 fontSize: 20,
                 transition: 'background 0.2s',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--yellow)'
-                e.currentTarget.style.color = 'var(--dark)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
-                e.currentTarget.style.color = '#fff'
+                borderRadius: 4,
               }}
               aria-label="Zavřít"
             >
               ✕
             </button>
 
-            {/* Prev */}
+            {/* Prev — hidden on mobile (swipe used instead) */}
             <button
               onClick={() => setLightbox((l) => l !== null ? (l - 1 + TOTAL) % TOTAL : null)}
+              className="hidden lg:flex"
               style={{
                 position: 'absolute',
-                left: 40,
+                left: 24,
                 top: '50%',
                 transform: 'translateY(-50%)',
                 width: 52,
                 height: 52,
                 background: 'rgba(255,255,255,0.06)',
                 border: '1px solid rgba(255,255,255,0.12)',
-                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
@@ -496,26 +552,22 @@ export default function Gallery() {
                 fontSize: 22,
                 transition: 'background 0.2s',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--yellow)'; e.currentTarget.style.color = 'var(--dark)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#fff' }}
               aria-label="Předchozí"
-            >
-              ←
-            </button>
+            >←</button>
 
             {/* Next */}
             <button
               onClick={() => setLightbox((l) => l !== null ? (l + 1) % TOTAL : null)}
+              className="hidden lg:flex"
               style={{
                 position: 'absolute',
-                right: 40,
+                right: 24,
                 top: '50%',
                 transform: 'translateY(-50%)',
                 width: 52,
                 height: 52,
                 background: 'rgba(255,255,255,0.06)',
                 border: '1px solid rgba(255,255,255,0.12)',
-                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
@@ -523,24 +575,21 @@ export default function Gallery() {
                 fontSize: 22,
                 transition: 'background 0.2s',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--yellow)'; e.currentTarget.style.color = 'var(--dark)' }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = '#fff' }}
               aria-label="Další"
-            >
-              →
-            </button>
+            >→</button>
 
             {/* Counter */}
             <div
               style={{
                 position: 'absolute',
-                bottom: 32,
+                bottom: 16,
                 left: '50%',
                 transform: 'translateX(-50%)',
                 fontFamily: "var(--font-ibm-plex-mono), monospace",
                 fontSize: 12,
-                color: 'rgba(255,255,255,0.3)',
+                color: 'rgba(255,255,255,0.4)',
                 letterSpacing: '2px',
+                whiteSpace: 'nowrap',
               }}
             >
               {lightbox + 1} / {TOTAL}

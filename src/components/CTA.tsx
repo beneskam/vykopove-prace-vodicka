@@ -24,6 +24,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
+          className="section-heading-block flex! flex-col!"
         >
           <div
             style={{
@@ -69,6 +70,7 @@ export default function CTA() {
             alignItems: 'stretch',
             width: '100%',
             maxWidth: 360,
+            margin: '0 auto',
           }}
         >
           <a

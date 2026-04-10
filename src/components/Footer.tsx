@@ -21,7 +21,7 @@ export default function Footer() {
             paddingBottom: 48,
             borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}
-          className="grid-cols-1 sm:grid-cols-2 lg:!grid-cols-[320px_220px_200px_1fr] !gap-8 lg:!gap-[60px]"
+          className="grid-cols-1! sm:grid-cols-2! lg:grid-cols-[320px_220px_200px_1fr]! gap-8! lg:gap-15!"
         >
           {/* Brand */}
           <div>
@@ -79,7 +79,7 @@ export default function Footer() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  Zemní a\u00A0Výkopové Práce
+                  Zemní a{'\u00A0'}Výkopové Práce
                 </span>
               </div>
             </a>
@@ -93,7 +93,7 @@ export default function Footer() {
                 maxWidth: 280,
               }}
             >
-              Profesionální zemní a\u00A0výkopové práce v\u00A0Praze a\u00A0Středočeském kraji.
+              Profesionální zemní a{'\u00A0'}výkopové práce v{'\u00A0'}Praze a{'\u00A0'}Středočeském kraji.{' '}
               20 let zkušeností, moderní technika JCB.
             </p>
           </div>
