@@ -220,9 +220,7 @@ export default function Projects() {
               margin: 0,
             }}
           >
-            Velké
-            <br />
-            Projekty
+            Reference
           </h2>
         </motion.div>
 
