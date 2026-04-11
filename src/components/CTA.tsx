@@ -1,12 +1,14 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Container from './Container'
+import PoptavkaModal from './PoptavkaModal'
 
 export default function CTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section
@@ -73,8 +75,8 @@ export default function CTA() {
             margin: '0 auto',
           }}
         >
-          <a
-            href="tel:+420777599092"
+          <button
+            onClick={() => setModalOpen(true)}
             style={{
               background: 'var(--dark)',
               color: '#fff',
@@ -85,13 +87,14 @@ export default function CTA() {
               textTransform: 'uppercase',
               padding: '20px 32px',
               borderRadius: 12,
-              textDecoration: 'none',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: 10,
               transition: 'background 0.2s, transform 0.15s',
               border: '2px solid rgba(255,255,255,0.1)',
+              cursor: 'pointer',
+              width: '100%',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#2a3540'
@@ -103,17 +106,19 @@ export default function CTA() {
             }}
           >
             Nezávazná poptávka
-          </a>
+          </button>
 
           <a
             href="tel:+420777599092"
             style={{
               border: '2px solid var(--dark)',
               color: 'var(--dark)',
-              fontFamily: "var(--font-dm-sans), sans-serif",
-              fontWeight: 600,
+              fontFamily: "var(--font-barlow-condensed), sans-serif",
+              fontWeight: 900,
               fontSize: 16,
-              padding: '18px 32px',
+              letterSpacing: '1.92px',
+              textTransform: 'uppercase',
+              padding: '20px 32px',
               borderRadius: 12,
               textDecoration: 'none',
               display: 'flex',
@@ -147,6 +152,7 @@ export default function CTA() {
           </p>
         </motion.div>
       </Container>
+      {modalOpen && <PoptavkaModal onClose={() => setModalOpen(false)} />}
     </section>
   )
 }
