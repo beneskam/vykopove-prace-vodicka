@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer'
+import { BrevoClient, BrevoError } from '@getbrevo/brevo'
 
 export async function POST(request: Request) {
   const { name, phone, email, message } = await request.json()
@@ -7,37 +7,43 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Vyplňte povinná pole.' }, { status: 400 })
   }
 
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.seznam.cz',
-    port: Number(process.env.SMTP_PORT) || 465,
-    secure: true,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  })
+  const apiKey = process.env.BREVO_API_KEY
+  if (!apiKey) {
+    return Response.json({ error: 'Server není nakonfigurován.' }, { status: 500 })
+  }
 
-  await transporter.sendMail({
-    from: process.env.SMTP_USER,
-    to: 'petrvodas@seznam.cz',
-    subject: `Nová poptávka od ${name}`,
-    text: [
-      `Jméno: ${name}`,
-      `Telefon: ${phone}`,
-      email ? `E-mail: ${email}` : '',
-      ``,
-      `Zpráva:`,
-      message,
-    ]
-      .filter(Boolean)
-      .join('\n'),
-    html: `
-      <p><strong>Jméno:</strong> ${name}</p>
-      <p><strong>Telefon:</strong> ${phone}</p>
-      ${email ? `<p><strong>E-mail:</strong> ${email}</p>` : ''}
-      <p><strong>Zpráva:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
-    `,
-  })
+  const apiInstance = new BrevoClient({ apiKey })
+
+  const textContent = [
+    `Nová poptávka od: ${name}`,
+    `Telefon: ${phone}`,
+    email ? `E-mail: ${email}` : '',
+    ``,
+    `Zpráva:`,
+    message,
+  ]
+    .filter((l) => l !== undefined)
+    .join('\n')
+
+  try {
+    await apiInstance.transactionalEmails.sendTransacEmail({
+      subject: `Nová poptávka — ${name}`,
+      textContent,
+      sender: {
+        name: 'Zemní práce Vodička',
+        email: process.env.BREVO_FROM_EMAIL ?? 'noreply@vodickakopani.cz',
+      },
+      to: [{ email: 'petrvodas@seznam.cz' }],
+      replyTo: email ? { email, name } : undefined,
+    })
+  } catch (err) {
+    if (err instanceof BrevoError) {
+      console.error(`Brevo error ${err.statusCode}:`, err.message)
+    } else {
+      console.error('Email send error:', err)
+    }
+    return Response.json({ error: 'Nepodařilo se odeslat zprávu.' }, { status: 500 })
+  }
 
   return Response.json({ ok: true })
 }
