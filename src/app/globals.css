@@ -180,6 +180,19 @@ p {
   }
 }
 
+/* ── Reference tabs on mobile — full width, equal buttons ── */
+@media (max-width: 767px) {
+  .projects-tabs {
+    width: 100% !important;
+  }
+  .projects-tabs button {
+    flex: 1 !important;
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
 /* ── Project rows on mobile ── */
 @media (max-width: 767px) {
   .project-row {

@@ -76,11 +76,11 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
+          className="projects-tabs"
           style={{
             display: 'flex', gap: 8,
             background: 'rgba(0,0,0,0.04)', border: '1px solid rgba(0,0,0,0.08)',
             borderRadius: 14, padding: 5, width: 'fit-content', marginBottom: 40,
-            flexWrap: 'wrap',
           }}
         >
           {[{ id: 'fyzicke', label: 'Pro fyzické osoby' }, { id: 'firmy', label: 'Pro firmy' }].map(tab => (
