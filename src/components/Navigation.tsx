@@ -214,7 +214,7 @@ export default function Navigation() {
           maxHeight: menuOpen ? 400 : 0,
         }}
       >
-        <div className="flex flex-col px-6 py-4 gap-1">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '8px 24px 20px', gap: 0 }}>
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -223,13 +223,15 @@ export default function Navigation() {
               style={{
                 fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: 500,
-                fontSize: 16,
+                fontSize: 15,
                 color: 'var(--dark)',
                 textDecoration: 'none',
                 letterSpacing: '1.04px',
                 textTransform: 'uppercase',
-                padding: '12px 0',
+                padding: '13px 0',
                 borderBottom: '1px solid #eeeff0',
+                width: '100%',
+                textAlign: 'center',
               }}
             >
               {link.label}
@@ -239,10 +241,13 @@ export default function Navigation() {
             href="tel:+420777599092"
             style={{
               fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: 16,
+              fontSize: 15,
               color: 'var(--dark)',
               textDecoration: 'none',
-              padding: '12px 0',
+              padding: '14px 0',
+              textAlign: 'center',
+              width: '100%',
+              borderBottom: '1px solid #eeeff0',
             }}
           >
             +420 777 599 092
@@ -254,14 +259,14 @@ export default function Navigation() {
               color: 'var(--dark)',
               fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 900,
-              fontSize: 14,
+              fontSize: 15,
               letterSpacing: '1.56px',
               textTransform: 'uppercase',
-              padding: '12px 0',
+              padding: '13px 0',
               borderRadius: 12,
               border: 'none',
               cursor: 'pointer',
-              marginTop: 4,
+              marginTop: 12,
               width: '100%',
             }}
           >
