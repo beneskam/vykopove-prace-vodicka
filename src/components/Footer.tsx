@@ -280,7 +280,7 @@ export default function Footer() {
               letterSpacing: "1px",
             }}
           >
-            © 2025 Petr Vodička — Zemní práce. Všechna práva vyhrazena.
+            © {new Date().getFullYear()} Petr Vodička — Zemní práce. Všechna práva vyhrazena.
           </span>
           <span
             style={{
