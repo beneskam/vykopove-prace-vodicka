@@ -218,7 +218,7 @@ export default function Services() {
             }}
           >
             Komplexní realizace zemních prací od přípojek po dálniční stavby.
-            Moderní technika, zkušený tým, precizní realizace.
+            Moderní technika, zkušenosti a precizní realizace.
           </p>
           {/* <a
             href="#kontakt"

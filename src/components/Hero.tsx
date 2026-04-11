@@ -199,8 +199,9 @@ export default function Hero() {
             maxWidth: 480,
           }}
         >
-          Profesionální zemní a{'\u00A0'}výkopové práce, kanalizační přípojky a{'\u00A0'}demolice.{' '}
-          Přes 20 let zkušeností na{'\u00A0'}klíčových infrastrukturních projektech ČR.
+          Profesionální zemní a{"\u00A0"}výkopové práce, kanalizační a vodovodní
+          přípojky a{"\u00A0"}demolice. Přes 20 let zkušeností na{"\u00A0"}
+          klíčových infrastrukturních projektech ČR.
         </motion.p>
 
         {/* Stats */}
@@ -239,7 +240,15 @@ export default function Hero() {
               >
                 {s.num}
                 {s.sup && (
-                  <sup style={{ fontSize: "0.55em", fontWeight: 800, letterSpacing: 0, lineHeight: 1, verticalAlign: "super" }}>
+                  <sup
+                    style={{
+                      fontSize: "0.55em",
+                      fontWeight: 800,
+                      letterSpacing: 0,
+                      lineHeight: 1,
+                      verticalAlign: "super",
+                    }}
+                  >
                     {s.sup}
                   </sup>
                 )}
