@@ -1,5 +1,3 @@
-import { BrevoClient, BrevoError } from '@getbrevo/brevo'
-
 export async function POST(request: Request) {
   const { name, phone, email, message } = await request.json()
 
@@ -12,7 +10,7 @@ export async function POST(request: Request) {
     return Response.json({ error: 'Server není nakonfigurován.' }, { status: 500 })
   }
 
-  const apiInstance = new BrevoClient({ apiKey })
+  const fromEmail = process.env.BREVO_FROM_EMAIL ?? 'kml.benes@gmail.com'
 
   const textContent = [
     `Nová poptávka od: ${name}`,
@@ -21,27 +19,31 @@ export async function POST(request: Request) {
     ``,
     `Zpráva:`,
     message,
-  ]
-    .filter((l) => l !== undefined)
-    .join('\n')
+  ].filter(Boolean).join('\n')
 
-  try {
-    await apiInstance.transactionalEmails.sendTransacEmail({
-      subject: `Nová poptávka — ${name}`,
-      textContent,
-      sender: {
-        name: 'Zemní práce Vodička',
-        email: process.env.BREVO_FROM_EMAIL ?? 'noreply@vodickakopani.cz',
-      },
-      to: [{ email: 'petrvodas@seznam.cz' }],
-      replyTo: email ? { email, name } : undefined,
-    })
-  } catch (err) {
-    if (err instanceof BrevoError) {
-      console.error(`Brevo error ${err.statusCode}:`, err.message)
-    } else {
-      console.error('Email send error:', err)
-    }
+  const body: Record<string, unknown> = {
+    subject: `Nová poptávka — ${name}`,
+    textContent,
+    sender: { name: 'Zemní práce Vodička', email: fromEmail },
+    to: [{ email: 'petrvodas@seznam.cz' }],
+  }
+
+  if (email) {
+    body.replyTo = { email, name }
+  }
+
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'api-key': apiKey,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  })
+
+  if (!res.ok) {
+    const err = await res.text()
+    console.error('Brevo error:', err)
     return Response.json({ error: 'Nepodařilo se odeslat zprávu.' }, { status: 500 })
   }
 
