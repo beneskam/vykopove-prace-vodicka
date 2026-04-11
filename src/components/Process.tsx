@@ -42,7 +42,7 @@ const CheckIcon = ({ hovered }: IconProps) => (
 const steps: { num: string; title: string; desc: string; Icon: (p: IconProps) => React.ReactElement }[] = [
   { num: '01', title: 'Poptávka a\u00A0Konzultace', desc: 'Kontaktujte nás — popíšeme rozsah prací, podmínky a\u00A0termíny. Odpovídáme do\u00A024 hodin.', Icon: PhoneIcon },
   { num: '02', title: 'Nacenění a\u00A0Smlouva', desc: 'Vypracujeme cenovou nabídku s\u00A0termínem realizace. Pevná cena, žádná překvapení.', Icon: DocumentIcon },
-  { num: '03', title: 'Realizace', desc: 'Terén, technika, tým — vše na\u00A0místě dle plánu. Průběžná komunikace a\u00A0kontrola kvality.', Icon: DiggerIcon },
+  { num: '03', title: 'Realizace', desc: 'Terén, technika — vše na\u00A0místě dle plánu. Průběžná komunikace a\u00A0kontrola kvality.', Icon: DiggerIcon },
   { num: '04', title: 'Předání a\nZáruka', desc: 'Předání díla s\u00A0protokolem, záruční lhůta, dostupnost pro případné dotazy.', Icon: CheckIcon },
 ]
 
