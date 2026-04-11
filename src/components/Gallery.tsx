@@ -188,23 +188,6 @@ export default function Gallery() {
           </h2>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          style={{
-            fontFamily: "var(--font-dm-sans), sans-serif",
-            fontWeight: 300,
-            fontSize: 16,
-            lineHeight: 1.65,
-            color: 'rgba(255,255,255,0.45)',
-            maxWidth: 360,
-            margin: 0,
-          }}
-        >
-          Dokumentace reálných projektů — od výkopů kanalizačních přípojek
-          po rozsáhlé terénní úpravy a{'\u00A0'}demolice po celé Praze a{'\u00A0'}Středočeském kraji.
-        </motion.p>
       </Container>
 
       {/* ── MOBILE: simple full-width swipe slider ── */}
