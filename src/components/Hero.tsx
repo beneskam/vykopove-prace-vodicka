@@ -199,9 +199,9 @@ export default function Hero() {
             maxWidth: 480,
           }}
         >
-          Profesionální zemní a{"\u00A0"}výkopové práce, kanalizační a vodovodní
-          přípojky a{"\u00A0"}demolice. Přes 20 let zkušeností na{"\u00A0"}
-          klíčových infrastrukturních projektech ČR.
+          Zemní a{"\u00A0"}výkopové práce, kanalizační a{"\u00A0"}vodovodní přípojky, demolice.
+          Havířov, Ostrava a{"\u00A0"}celý Moravskoslezský kraj —
+          přes 20 let zkušeností na{"\u00A0"}klíčových infrastrukturních projektech ČR.
         </motion.p>
 
         {/* Stats */}
