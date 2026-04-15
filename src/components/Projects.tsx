@@ -10,74 +10,58 @@ const bigProjects = [
   {
     num: "01",
     title: "Rekonstrukce ul. Horní Valy — Uherský Brod",
-    sub: "Komplexní rekonstrukce povrchů a\u00A0inženýrských sítí",
     badge: "Rekonstrukce",
     badgeColor: "#16a34a",
     badgeBg: "#f0fdf4",
-    year: "2022–2023",
+    year: "2025–2026",
   },
   {
     num: "02",
     title: "Plavební komora — Baťův kanál, Rohatec",
-    sub: "Zemní práce a\u00A0přípojky pro vodní stavbu",
     badge: "Vodní stavby",
     badgeColor: "#0891b2",
     badgeBg: "#eff9ff",
-    year: "2021–2022",
+    year: "2024–2025",
   },
   {
     num: "03",
     title: "Dálnice D55 — Staré Město u\u00A0Uh. Hradiště",
-    sub: "Přeložky a\u00A0přípojky v\u00A0koridoru dálnice D55",
     badge: "Dálnice",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
-    year: "2020–2022",
+    year: "2024–2025",
   },
   {
     num: "04",
-    title: "Dálnice D48 — Český Těšín · Třanovice",
-    sub: "Napojení na\u00A0dálniční síť, přeložky vedení v\u00A0koridoru D48",
+    title: "Dálnice D48 — Bělotín, Starý Jičín, Dub",
     badge: "Dálnice",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
-    year: "2019–2021",
+    year: "2023–2024",
   },
   {
     num: "05",
-    title: "Obchvat Frýdek-Místek",
-    sub: "Vodovodní a\u00A0kanalizační přípojky — kompletní infrastruktura dopravní stavby",
-    badge: "Silnice",
+    title: "Dálnice D48 — Český Těšín · Třanovice",
+    badge: "Dálnice",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
-    year: "2018–2020",
+    year: "2023",
   },
   {
     num: "06",
-    title: "Přeložka vodovodu DN 300 — Zlín",
-    sub: "Přeložení hlavního vodovodního řadu v\u00A0délce 420 m, koordinace s\u00A0ŘSD",
-    badge: "Vodovod",
-    badgeColor: "#0891b2",
-    badgeBg: "#eff9ff",
-    year: "2017–2018",
+    title: "Obchvat Frýdek-Místek",
+    badge: "Silnice",
+    badgeColor: "#2563eb",
+    badgeBg: "#ebf5ff",
+    year: "2020–2023",
   },
   {
     num: "07",
-    title: "Průmyslová zóna Holešov — kanalizace",
-    sub: "Gravitační splašková kanalizace a\u00A0dešťová kanalizace pro průmyslový areál",
-    badge: "Průmysl",
+    title: "Inženýrské sítě měst a\u00A0obcí — Středočeský kraj",
+    badge: "Sítě",
     badgeColor: "#7c3aed",
     badgeBg: "#f5f3ff",
-    year: "2016–2017",
-  },
-  {
-    num: "08",
-    title: "Rekonstrukce vodovodu — Kroměříž centrum",
-    sub: "Výměna zastaralého litinového řadu DN 150, délka 680 m",
-    badge: "Vodovod",
-    badgeColor: "#0891b2",
-    badgeBg: "#eff9ff",
-    year: "2015–2016",
+    year: "2002–2019",
   },
 ];
 
@@ -85,7 +69,6 @@ const smallProjects = [
   {
     num: "01",
     title: "Zpevněná příjezdová cesta — Hodoňovice",
-    sub: "Betonová plocha, drenáž, lemování zámkovou dlažbou",
     badge: "Dlažby",
     badgeColor: "#d97706",
     badgeBg: "#fffbeb",
@@ -94,7 +77,6 @@ const smallProjects = [
   {
     num: "02",
     title: "Vodovodní a\u00A0kanalizační přípojka — Ostrava-Jih",
-    sub: "Kompletní přípojky pro nový rodinný dům, koordinace se správci sítí",
     badge: "Přípojky",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
@@ -103,7 +85,6 @@ const smallProjects = [
   {
     num: "03",
     title: "Demolice staré stodoly — Karviná",
-    sub: "Odstranění zemědělské stavby, odvoz materiálu, rekultivace půdy",
     badge: "Demolice",
     badgeColor: "#dc2626",
     badgeBg: "#fef2f2",
@@ -112,7 +93,6 @@ const smallProjects = [
   {
     num: "04",
     title: "Terénní úpravy zahrady — Orlová",
-    sub: "Modelování terénu, zpevněné plochy a\u00A0odvodnění pozemku",
     badge: "Terénní úpravy",
     badgeColor: "#16a34a",
     badgeBg: "#f0fdf4",
@@ -121,7 +101,6 @@ const smallProjects = [
   {
     num: "05",
     title: "Kanalizační přípojka — RD Havířov-Bludovice",
-    sub: "Napojení rodinného domu na\u00A0veřejnou kanalizaci, 18 m přípojky",
     badge: "Rodinné domy",
     badgeColor: "#7c3aed",
     badgeBg: "#f5f3ff",
@@ -130,7 +109,6 @@ const smallProjects = [
   {
     num: "06",
     title: "Bazénová technická přípojka — Brno-Bystrc",
-    sub: "Výkop a\u00A0pokládka přípojek pro zahradní bazén, zpětné uvedení terénu",
     badge: "Přípojky",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
@@ -139,7 +117,6 @@ const smallProjects = [
   {
     num: "07",
     title: "Výkop základových pasů — RD Třebíč",
-    sub: "Zemní práce pro novostavbu rodinného domu, přesné dodržení projektové dokumentace",
     badge: "Rodinné domy",
     badgeColor: "#7c3aed",
     badgeBg: "#f5f3ff",
@@ -148,7 +125,6 @@ const smallProjects = [
   {
     num: "08",
     title: "Zámková dlažba dvorek — Opava",
-    sub: "Výkop, štěrkové lože, pokládka betonové zámkové dlažby 120 m²",
     badge: "Dlažby",
     badgeColor: "#d97706",
     badgeBg: "#fffbeb",
@@ -340,17 +316,6 @@ export default function Projects() {
                       }}
                     >
                       {p.title}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-dm-sans), sans-serif",
-                        fontSize: "clamp(13px, 1.6vw, 16px)",
-                        lineHeight: "1.5",
-                        color: "var(--mid-gray)",
-                        margin: 0,
-                      }}
-                    >
-                      {p.sub}
                     </p>
                   </div>
                   <span
