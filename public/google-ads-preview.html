@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Google Ads — Zemní práce Vodička</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;800&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f0ede7;
+    padding: 60px 40px;
+    font-family: 'DM Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: flex-start;
+  }
+  .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #777c80;
+    margin-bottom: 12px;
+  }
+
+  /* ── LANDSCAPE 1200×628 ── */
+  .ad-landscape {
+    width: 1200px;
+    height: 628px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #eeeff0;
+  }
+
+  .ad-landscape .bg-img {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 680px;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 75%);
+    mask-image: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 75%);
+  }
+
+  .ad-landscape .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 5px;
+    background: #fcda01;
+    z-index: 10;
+  }
+
+  .ad-landscape .content {
+    position: absolute;
+    left: 80px; top: 0;
+    width: 580px; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 48px 0 80px;
+    gap: 0;
+    z-index: 2;
+  }
+
+  .ad-landscape .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2.86px;
+    text-transform: uppercase;
+    color: #777c80;
+    margin-bottom: 16px;
+  }
+  .ad-landscape .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: #777c80;
+    flex-shrink: 0;
+  }
+
+  .ad-landscape h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 86px;
+    line-height: 0.91;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: #1d252c;
+    margin-bottom: 18px;
+  }
+
+  .ad-landscape .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #4d5156;
+    margin-bottom: 6px;
+    max-width: 400px;
+  }
+
+  .ad-landscape .location {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #777c80;
+    letter-spacing: 0.5px;
+    margin-bottom: 28px;
+  }
+  .ad-landscape .location::before {
+    content: '';
+    display: block;
+    width: 12px; height: 1px;
+    background: #777c80;
+  }
+
+  .ad-landscape .cta-btn {
+    background: #fcda01;
+    color: #1d252c;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    padding: 16px 36px 14px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(252,218,1,0.4);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    line-height: 1.1;
+    width: fit-content;
+  }
+  .ad-landscape .cta-btn .btn-phone {
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    opacity: 0.6;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  /* stats strip — above bottom bar */
+  .ad-landscape .stats {
+    position: absolute;
+    bottom: 20px; left: 80px;
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+    z-index: 2;
+  }
+  .ad-landscape .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 28px;
+    color: #1d252c;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    display: block;
+  }
+  .ad-landscape .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    color: #777c80;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 3px;
+  }
+  .ad-landscape .stat-divider {
+    width: 1px;
+    height: 36px;
+    background: rgba(29,37,44,0.1);
+    align-self: center;
+  }
+
+  /* ── SQUARE 1200×1200 ── */
+  .ad-square {
+    width: 1200px;
+    height: 1200px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #eeeff0;
+  }
+
+  .ad-square .bg-img {
+    position: absolute;
+    right: -60px;
+    top: 30px;
+    width: 860px;
+    pointer-events: none;
+    -webkit-mask-image:
+      linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 42%, rgba(255,255,255,0) 72%),
+      linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 22%);
+    mask-image:
+      linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 42%, rgba(255,255,255,0) 72%),
+      linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 22%);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+  }
+
+  .ad-square .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 6px;
+    background: #fcda01;
+    z-index: 10;
+  }
+
+  .ad-square .content {
+    position: absolute;
+    left: 80px; top: 0;
+    width: 660px; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 100px;
+    gap: 0;
+    z-index: 2;
+  }
+
+  .ad-square .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2.86px;
+    text-transform: uppercase;
+    color: #777c80;
+    margin-bottom: 22px;
+  }
+  .ad-square .eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: #777c80;
+    flex-shrink: 0;
+  }
+
+  .ad-square h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 162px;
+    line-height: 0.88;
+    letter-spacing: -4px;
+    text-transform: uppercase;
+    color: #1d252c;
+    margin-bottom: 28px;
+  }
+
+  .ad-square .desc {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.55;
+    color: #4d5156;
+    max-width: 500px;
+    margin-bottom: 10px;
+  }
+
+  .ad-square .location {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: #777c80;
+    letter-spacing: 0.5px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ad-square .location::before {
+    content: '';
+    display: block;
+    width: 16px; height: 1px;
+    background: #777c80;
+  }
+
+  .ad-square .cta-btn {
+    background: #fcda01;
+    color: #1d252c;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 22px 52px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 28px rgba(252,218,1,0.4);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    line-height: 1.1;
+    width: fit-content;
+    margin-bottom: 52px;
+  }
+  .ad-square .cta-btn .btn-phone {
+    font-size: 16px;
+    letter-spacing: 0.8px;
+    opacity: 0.6;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  .ad-square .divider {
+    width: 580px;
+    height: 1px;
+    background: rgba(29,37,44,0.1);
+    margin-bottom: 28px;
+  }
+
+  .ad-square .services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 48px;
+    width: 580px;
+  }
+  .ad-square .service-item {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    color: #4d5156;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ad-square .service-item::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fcda01;
+    flex-shrink: 0;
+  }
+
+  /* stats */
+  .ad-square .stats {
+    position: absolute;
+    bottom: 24px; left: 80px;
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+    z-index: 2;
+  }
+  .ad-square .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 36px;
+    color: #1d252c;
+    letter-spacing: -1px;
+    line-height: 1;
+    display: block;
+  }
+  .ad-square .stat-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #777c80;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+  .ad-square .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(29,37,44,0.1);
+    align-self: center;
+  }
+
+  .ad-square .domain {
+    position: absolute;
+    bottom: 34px; right: 52px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: #777c80;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+
+<div class="label">Google Ad — Landscape 1200×628 — DevTools F12 → klik na element → Capture node screenshot</div>
+
+<!-- ── LANDSCAPE ── -->
+<div class="ad-landscape">
+  <div class="bottom-bar"></div>
+  <img class="bg-img" src="/assets/hero-background.webp" alt="">
+
+  <div class="content">
+    <div class="eyebrow">Zemní práce Vodička</div>
+    <h1>
+      Zemní<br>
+      a Výkopové<br>
+      Práce Vodička
+    </h1>
+    <p class="desc">Výkopy, přípojky, demolice.<br>Přes 20 let zkušeností po celé ČR.</p>
+    <p class="location">Havířov · Ostrava · Moravskoslezský kraj</p>
+    <div class="cta-btn">
+      Poptávka zdarma
+      <span class="btn-phone">+420 777 599 092</span>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div>
+      <span class="stat-num">20<sup style="font-size:0.55em;vertical-align:super">+</sup></span>
+      <span class="stat-label">Let praxe</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">D48</span>
+      <span class="stat-label">Dálnice</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">D55</span>
+      <span class="stat-label">Dálnice</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">100<sup style="font-size:0.55em;vertical-align:super">%</sup></span>
+      <span class="stat-label">Dokončeno včas</span>
+    </div>
+  </div>
+</div>
+
+<div class="label" style="margin-top:20px">Google Ad — Square 1200×1200 — DevTools F12 → klik na element → Capture node screenshot</div>
+
+<!-- ── SQUARE ── -->
+<div class="ad-square">
+  <div class="bottom-bar"></div>
+  <img class="bg-img" src="/assets/hero-background.webp" alt="">
+
+  <div class="content">
+    <div class="eyebrow">Zemní práce Vodička</div>
+    <h1>
+      Zemní<br>
+      a Výkopové<br>
+      Práce Vodička
+    </h1>
+    <p class="desc">Výkopy, kanalizační a vodovodní přípojky, terénní úpravy, demolice.</p>
+    <p class="location">Havířov · Ostrava · Karviná · Frýdek-Místek</p>
+    <div class="cta-btn">
+      Poptávka zdarma
+      <span class="btn-phone">+420 777 599 092</span>
+    </div>
+    <div class="divider"></div>
+    <div class="services">
+      <div class="service-item">Zemní práce</div>
+      <div class="service-item">Kanalizační přípojky</div>
+      <div class="service-item">Vodovodní přípojky</div>
+      <div class="service-item">Terénní úpravy</div>
+      <div class="service-item">Demolice staveb</div>
+      <div class="service-item">Zámkové dlažby</div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div>
+      <span class="stat-num">20<sup style="font-size:0.55em;vertical-align:super">+</sup></span>
+      <span class="stat-label">Let praxe</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">D48</span>
+      <span class="stat-label">Dálnice</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">D55</span>
+      <span class="stat-label">Dálnice</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div>
+      <span class="stat-num">100<sup style="font-size:0.55em;vertical-align:super">%</sup></span>
+      <span class="stat-label">Dokončeno včas</span>
+    </div>
+  </div>
+
+  <div class="domain">bagr-vykopy.cz</div>
+</div>
+
+</body>
+</html>

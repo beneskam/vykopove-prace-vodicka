@@ -1,50 +1,50 @@
-'use client'
+"use client";
 
 const items = [
-  'Zemní práce',
-  'Výkopové práce',
-  'Kanalizační přípojky',
-  'Vodovodní přípojky',
-  'Terénní úpravy',
-  'Zámkové dlažby',
-  'Demolice',
-  'Praha a\u00A0Střední Čechy',
-]
+  "Zemní práce",
+  "Výkopové práce",
+  "Kanalizační přípojky",
+  "Vodovodní přípojky",
+  "Terénní úpravy",
+  "Zámkové dlažby",
+  "Demolice",
+  "Moravskoslezský kraj",
+];
 
 export default function Ticker() {
-  const doubled = [...items, ...items]
+  const doubled = [...items, ...items];
 
   return (
     <div
       style={{
-        background: 'var(--yellow)',
+        background: "var(--yellow)",
         height: 52,
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'relative',
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        position: "relative",
         zIndex: 10,
       }}
     >
       <div
         className="animate-ticker flex items-center whitespace-nowrap"
-        style={{ willChange: 'transform' }}
+        style={{ willChange: "transform" }}
       >
         {doubled.map((item, i) => (
           <span
             key={i}
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
+              display: "inline-flex",
+              alignItems: "center",
               gap: 24,
               paddingLeft: 32,
               paddingRight: 8,
               fontFamily: "var(--font-barlow-condensed), sans-serif",
               fontWeight: 800,
               fontSize: 16,
-              color: 'var(--dark)',
-              letterSpacing: '2.1px',
-              textTransform: 'uppercase',
+              color: "var(--dark)",
+              letterSpacing: "2.1px",
+              textTransform: "uppercase",
             }}
           >
             {item}
@@ -61,5 +61,5 @@ export default function Ticker() {
         ))}
       </div>
     </div>
-  )
+  );
 }
