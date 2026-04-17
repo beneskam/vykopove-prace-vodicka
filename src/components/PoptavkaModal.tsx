@@ -31,6 +31,9 @@ export default function PoptavkaModal({ onClose }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setStatus('sending')
+    if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+      (window as any).gtag('event', 'conversion', { send_to: 'AW-18089310567/bfdnCNSj3p0cEOfy07FD' })
+    }
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',

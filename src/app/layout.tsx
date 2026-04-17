@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import {
   Syne,
   Barlow,
@@ -187,6 +188,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">{children}</body>
+      <GoogleAnalytics gaId="AW-18089310567" />
     </html>
   );
 }
