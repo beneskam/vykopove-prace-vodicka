@@ -68,67 +68,59 @@ const bigProjects = [
 const smallProjects = [
   {
     num: "01",
-    title: "Zpevněná příjezdová cesta — Hodoňovice",
-    badge: "Dlažby",
+    title: "Příjezdová cesta vč. obrubníků a\u00A0štěrkového podkladu — RD Hodoňovice",
+    badge: "Zpevněné plochy",
     badgeColor: "#d97706",
     badgeBg: "#fffbeb",
-    year: "2026",
   },
   {
     num: "02",
-    title: "Vodovodní a\u00A0kanalizační přípojka — Ostrava-Jih",
+    title: "Kanalizační přípojka a\u00A0zámková dlažba — RD Frýdek-Místek",
     badge: "Přípojky",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
-    year: "2025",
   },
   {
     num: "03",
-    title: "Demolice staré stodoly — Karviná",
-    badge: "Demolice",
-    badgeColor: "#dc2626",
-    badgeBg: "#fef2f2",
-    year: "2024",
-  },
-  {
-    num: "04",
-    title: "Terénní úpravy zahrady — Orlová",
-    badge: "Terénní úpravy",
-    badgeColor: "#16a34a",
-    badgeBg: "#f0fdf4",
-    year: "2024",
-  },
-  {
-    num: "05",
-    title: "Kanalizační přípojka — RD Havířov-Bludovice",
-    badge: "Rodinné domy",
-    badgeColor: "#7c3aed",
-    badgeBg: "#f5f3ff",
-    year: "2023",
-  },
-  {
-    num: "06",
-    title: "Bazénová technická přípojka — Brno-Bystrc",
+    title: "Vodovodní a\u00A0kanalizační přípojka — RD Hradiště",
     badge: "Přípojky",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",
-    year: "2023",
+  },
+  {
+    num: "04",
+    title: "Demolice RD — Havířov",
+    badge: "Demolice",
+    badgeColor: "#dc2626",
+    badgeBg: "#fef2f2",
+  },
+  {
+    num: "05",
+    title: "Terénní úpravy — RD Těrlicko",
+    badge: "Terénní úpravy",
+    badgeColor: "#16a34a",
+    badgeBg: "#f0fdf4",
+  },
+  {
+    num: "06",
+    title: "Spadová kanalizace vč. uložení a\u00A0zapojení ČOV — RD Domaslavice",
+    badge: "Kanalizace",
+    badgeColor: "#0891b2",
+    badgeBg: "#eff9ff",
   },
   {
     num: "07",
-    title: "Výkop základových pasů — RD Třebíč",
-    badge: "Rodinné domy",
+    title: "Výkop základových pasů — RD Pstruží",
+    badge: "Zemní práce",
     badgeColor: "#7c3aed",
     badgeBg: "#f5f3ff",
-    year: "2022",
   },
   {
     num: "08",
-    title: "Zámková dlažba dvorek — Opava",
-    badge: "Dlažby",
-    badgeColor: "#d97706",
-    badgeBg: "#fffbeb",
-    year: "2022",
+    title: "Retenční nádrž vč. napojení dešťové kanalizace — RD Hnojník",
+    badge: "Retenční nádrž",
+    badgeColor: "#0891b2",
+    badgeBg: "#eff9ff",
   },
 ];
 
@@ -334,19 +326,21 @@ export default function Projects() {
                   >
                     {p.badge}
                   </span>
-                  <span
-                    className="project-row-year"
-                    style={{
-                      fontFamily: "var(--font-ibm-plex-mono), monospace",
-                      fontSize: 12,
-                      color: "#a5a8ab",
-                      minWidth: 80,
-                      textAlign: "right",
-                      flexShrink: 0,
-                    }}
-                  >
-                    {p.year}
-                  </span>
+                  {"year" in p && !!(p as { year: string }).year && (
+                    <span
+                      className="project-row-year"
+                      style={{
+                        fontFamily: "var(--font-ibm-plex-mono), monospace",
+                        fontSize: 12,
+                        color: "#a5a8ab",
+                        minWidth: 80,
+                        textAlign: "right",
+                        flexShrink: 0,
+                      }}
+                    >
+                      {(p as { year: string }).year}
+                    </span>
+                  )}
                 </motion.div>
               ))}
             </AnimatePresence>
