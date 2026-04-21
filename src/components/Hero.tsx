@@ -34,7 +34,7 @@ export default function Hero() {
         display: "flex",
         alignItems: "flex-start",
         background: "#fff",
-        paddingBottom: "clamp(40px, 6vh, 80px)",
+        paddingBottom: 0,
       }}
     >
       {/* ─────────── Machine — parallax outer + float+entrance inner ─────────── */}
