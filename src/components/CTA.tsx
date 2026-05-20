@@ -1,14 +1,14 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Container from './Container'
-import PoptavkaModal from './PoptavkaModal'
+
+const MAILTO = 'mailto:petrvodas@seznam.cz?subject=Popt%C3%A1vka%20zem%C3%ADch%20prac%C3%AD'
 
 export default function CTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
-  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section
@@ -75,8 +75,8 @@ export default function CTA() {
             margin: '0 auto',
           }}
         >
-          <button
-            onClick={() => setModalOpen(true)}
+          <a
+            href={MAILTO}
             style={{
               background: 'var(--dark)',
               color: '#fff',
@@ -93,7 +93,7 @@ export default function CTA() {
               gap: 10,
               transition: 'background 0.2s, transform 0.15s',
               border: '2px solid rgba(255,255,255,0.1)',
-              cursor: 'pointer',
+              textDecoration: 'none',
               width: '100%',
             }}
             onMouseEnter={(e) => {
@@ -105,8 +105,11 @@ export default function CTA() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
-            Nezávazná poptávka
-          </button>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            Napsat e-mail
+          </a>
 
           <a
             href="tel:+420777599092"
@@ -148,11 +151,16 @@ export default function CTA() {
               margin: 0,
             }}
           >
-            +420 777 599 092 · petrvodas@seznam.cz
+            +420 777 599 092 ·{' '}
+            <a
+              href={MAILTO}
+              style={{ color: 'rgba(29,37,44,0.5)', textDecoration: 'underline' }}
+            >
+              petrvodas@seznam.cz
+            </a>
           </p>
         </motion.div>
       </Container>
-      {modalOpen && <PoptavkaModal onClose={() => setModalOpen(false)} />}
     </section>
   )
 }

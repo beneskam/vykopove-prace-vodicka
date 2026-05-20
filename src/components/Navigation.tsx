@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import PoptavkaModal from './PoptavkaModal'
 
 const navLinks = [
   { href: '#o-firme', label: 'O firmě' },
@@ -12,11 +11,12 @@ const navLinks = [
   { href: '#kontakt', label: 'Kontakt' },
 ]
 
+const MAILTO = 'mailto:petrvodas@seznam.cz?subject=Popt%C3%A1vka%20zem%C3%ADch%20prac%C3%AD'
+
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('o-firme')
   const [menuOpen, setMenuOpen] = useState(false)
-  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,8 +48,8 @@ export default function Navigation() {
         style={{
           maxWidth: 1440,
           margin: '0 auto',
-          paddingLeft: 'clamp(24px, 6.25vw, 100px)',
-          paddingRight: 'clamp(24px, 6.25vw, 100px)',
+          paddingLeft: 'clamp(20px, 3vw, 60px)',
+          paddingRight: 'clamp(20px, 3vw, 60px)',
           width: '100%',
         }}
         className="h-full flex items-center justify-between"
@@ -100,7 +100,7 @@ export default function Navigation() {
         </a>
 
         {/* Desktop nav links */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -108,10 +108,10 @@ export default function Navigation() {
               style={{
                 fontFamily: "var(--font-dm-sans), sans-serif",
                 fontWeight: active === link.href.slice(1) ? 700 : 500,
-                fontSize: 14,
+                fontSize: 13,
                 color: active === link.href.slice(1) ? 'var(--dark)' : 'var(--mid-gray)',
                 textDecoration: 'none',
-                letterSpacing: '1.04px',
+                letterSpacing: '0.8px',
                 textTransform: 'uppercase',
                 transition: 'color 0.2s',
               }}
@@ -124,27 +124,28 @@ export default function Navigation() {
         </div>
 
         {/* Right: phone + CTA */}
-        <div className="hidden lg:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+420777599092"
             style={{
               fontFamily: "var(--font-ibm-plex-mono), monospace",
-              fontSize: 14,
+              fontSize: 13,
               color: 'var(--dark)',
               textDecoration: 'none',
               letterSpacing: '0.5px',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 7,
+              gap: 6,
+              whiteSpace: 'nowrap',
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--dark)" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="var(--dark)" aria-hidden="true">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
             </svg>
             +420 777 599 092
           </a>
-          <button
-            onClick={() => setModalOpen(true)}
+          <a
+            href={MAILTO}
             style={{
               background: 'var(--yellow)',
               color: 'var(--dark)',
@@ -157,9 +158,9 @@ export default function Navigation() {
               borderRadius: 12,
               display: 'inline-flex',
               alignItems: 'center',
+              gap: 7,
               transition: 'background 0.2s, transform 0.1s',
-              border: 'none',
-              cursor: 'pointer',
+              textDecoration: 'none',
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = '#e8c800'
@@ -170,8 +171,11 @@ export default function Navigation() {
               e.currentTarget.style.transform = 'translateY(0)'
             }}
           >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
             Poptávka
-          </button>
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -252,8 +256,9 @@ export default function Navigation() {
           >
             +420 777 599 092
           </a>
-          <button
-            onClick={() => { setMenuOpen(false); setModalOpen(true) }}
+          <a
+            href={MAILTO}
+            onClick={() => setMenuOpen(false)}
             style={{
               background: 'var(--yellow)',
               color: 'var(--dark)',
@@ -264,17 +269,22 @@ export default function Navigation() {
               textTransform: 'uppercase',
               padding: '13px 0',
               borderRadius: 12,
-              border: 'none',
-              cursor: 'pointer',
               marginTop: 12,
               width: '100%',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
             }}
           >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
             Poptávka
-          </button>
+          </a>
         </div>
       </div>
-      {modalOpen && <PoptavkaModal onClose={() => setModalOpen(false)} />}
     </nav>
   )
 }
