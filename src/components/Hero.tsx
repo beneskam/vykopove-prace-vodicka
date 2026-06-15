@@ -81,7 +81,7 @@ export default function Hero() {
         >
           <Image
             src="/assets/hero-background.webp"
-            alt="JCB 3CX Backhoe Loader — Zemní práce Vodička"
+            alt="JCB 3CX Backhoe Loader — Zemní a výkopové práce Vodička"
             fill
             sizes="(max-width: 1023px) 100vw, 64vw"
             style={{ objectFit: "contain", objectPosition: "top right" }}
