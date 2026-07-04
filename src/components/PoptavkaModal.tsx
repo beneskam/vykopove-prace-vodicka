@@ -304,6 +304,13 @@ export default function PoptavkaModal({ onClose }: Props) {
             >
               {status === 'sending' ? 'Odesílám…' : 'Odeslat poptávku'}
             </button>
+            <p style={{ fontSize: 12, color: '#83878b', margin: '8px 0 0' }}>
+              Odesláním poptávky berete na vědomí{' '}
+              <a href="/gdpr" style={{ color: 'inherit', textDecoration: 'underline' }}>
+                zásady zpracování osobních údajů
+              </a>
+              .
+            </p>
           </form>
         )}
       </div>
