@@ -55,12 +55,13 @@ export default function GdprPage() {
 
           <h2 style={sectionTitle}>2. Jaké údaje zpracováváme</h2>
           <p style={text}>
-            <strong>Poptávkový formulář:</strong> jméno, telefon, e-mail a
-            obsah zprávy. Tyto údaje zpracováváme za účelem vyřízení vaší
-            poptávky a přípravy nabídky (právní základ: plnění smlouvy, resp.
-            jednání o jejím uzavření dle čl. 6 odst. 1 písm. b) GDPR).
-            Uchováváme je po dobu nezbytnou k vyřízení poptávky, nejdéle 3
-            roky.
+            <strong>Poptávky:</strong> web neobsahuje žádný formulář —
+            kontaktujete nás přímo telefonicky nebo e-mailem. Údaje, které
+            nám při poptávce sdělíte (jméno, telefon, e-mail, popis
+            zakázky), zpracováváme za účelem vyřízení poptávky a přípravy
+            nabídky (právní základ: plnění smlouvy, resp. jednání o jejím
+            uzavření dle čl. 6 odst. 1 písm. b) GDPR). Uchováváme je po dobu
+            nezbytnou k vyřízení poptávky, nejdéle 3 roky.
           </p>
           <p style={text}>
             <strong>Cookies a měření:</strong> se souhlasem uděleným v
@@ -73,14 +74,13 @@ export default function GdprPage() {
           <p style={text}>
             Web používá pouze nezbytné technické cookies a — pouze po vašem
             souhlasu — marketingové cookies služby Google Ads
-            (googletagmanager.com). Souhlas můžete kdykoli odvolat smazáním
-            cookies ve svém prohlížeči; při další návštěvě se cookie lišta
-            zobrazí znovu.
+            (googletagmanager.com). Souhlas můžete kdykoli změnit nebo
+            odvolat kliknutím na „Nastavení cookies&ldquo; v patičce webu.
           </p>
 
           <h2 style={sectionTitle}>4. Komu údaje předáváme</h2>
           <p style={text}>
-            Údaje z formuláře nepředáváme třetím stranám. Měřicí data
+            Údaje z poptávek nepředáváme třetím stranám. Měřicí data
             zpracovává společnost Google Ireland Ltd. jako poskytovatel
             služby Google Ads. Web je provozován na platformě Netlify.
           </p>

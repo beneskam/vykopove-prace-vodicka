@@ -296,7 +296,24 @@ export default function Footer() {
             >
               GDPR
             </a>{" "}
-            · Obchodní podmínky
+            ·{" "}
+            <button
+              onClick={() =>
+                window.dispatchEvent(new Event("open-cookie-banner"))
+              }
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                font: "inherit",
+                color: "inherit",
+                letterSpacing: "inherit",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+            >
+              Nastavení cookies
+            </button>
           </span>
         </div>
       </Container>

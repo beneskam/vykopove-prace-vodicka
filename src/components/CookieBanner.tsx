@@ -25,6 +25,9 @@ export default function CookieBanner() {
     } else if (stored === null) {
       setVisible(true);
     }
+    const reopen = () => setVisible(true);
+    window.addEventListener("open-cookie-banner", reopen);
+    return () => window.removeEventListener("open-cookie-banner", reopen);
   }, []);
 
   const decide = (granted: boolean) => {
