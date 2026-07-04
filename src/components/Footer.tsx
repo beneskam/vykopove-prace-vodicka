@@ -290,7 +290,13 @@ export default function Footer() {
               letterSpacing: "1px",
             }}
           >
-            GDPR · Obchodní podmínky
+            <a
+              href="/gdpr"
+              style={{ color: "inherit", textDecoration: "underline" }}
+            >
+              GDPR
+            </a>{" "}
+            · Obchodní podmínky
           </span>
         </div>
       </Container>
