@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import CookieBanner from "@/components/CookieBanner";
+import PhoneConversionTracker from "@/components/PhoneConversionTracker";
 import {
   Syne,
   Barlow,
@@ -293,6 +294,7 @@ export default function RootLayout({
           gtag('config', 'AW-18089310567');
         `}</Script>
         <CookieBanner />
+        <PhoneConversionTracker />
       </body>
     </html>
   );

@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const navLinks = [
-  { href: '#o-firme', label: 'O firmě' },
-  { href: '#sluzby', label: 'Služby' },
-  { href: '#reference', label: 'Reference' },
-  { href: '#galerie', label: 'Galerie' },
-  { href: '#kontakt', label: 'Kontakt' },
+  { href: '/#o-firme', label: 'O firmě' },
+  { href: '/#sluzby', label: 'Služby' },
+  { href: '/#reference', label: 'Reference' },
+  { href: '/#galerie', label: 'Galerie' },
+  { href: '/#kontakt', label: 'Kontakt' },
 ]
 
 const MAILTO = 'mailto:petrvodas@seznam.cz?subject=Popt%C3%A1vka%20zem%C3%ADch%20prac%C3%AD'
@@ -55,7 +55,7 @@ export default function Navigation() {
         className="h-full flex items-center justify-between"
       >
         {/* Logo */}
-        <a href="#o-firme" className="flex items-center gap-[14px] no-underline flex-shrink-0">
+        <a href="/#o-firme" className="flex items-center gap-[14px] no-underline flex-shrink-0">
           <div
             className="flex items-center justify-center flex-shrink-0"
             style={{ width: 38, height: 38, background: 'var(--dark)' }}
