@@ -210,6 +210,43 @@ const jsonLd = [
     sameAs: [
       "https://maps.app.goo.gl/JqWSBTDpFsHm7NmH7",
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "10",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: [
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        author: { "@type": "Person", name: "Hana Krůčková" },
+        reviewBody:
+          "Firmu Petr Vodička mohu vřele doporučit, výkopové práce i následné terénní úpravy byly provedeny kvalitně, rychle a podle domluvy. Oceňuji zejména precizně odvedenou práci, spolehlivost, dodržení domluvených termínů a vstřícnou komunikaci. Vše proběhlo přesně podle mých představ.",
+      },
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        author: { "@type": "Person", name: "Ing. Jiří Mika" },
+        reviewBody:
+          "Velmi dobrá spolupráce, profesionalita a lidský přístup. Při výstavbě nám pomáhal s přepravou materiálu, při výkopech, s pokládkou těžkých žlabů, s urovnáním lomového kamene a s ukládáním potrubí. Mohu jen doporučit pro všechny druhy zemních prací.",
+      },
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        author: { "@type": "Person", name: "Pavel Bobek" },
+        reviewBody:
+          "Naprosto pana Vodičku doporučuji. Mám s ním jen výborné zkušenosti. Je přesný na čas, je slušný a je perfekcionista při úpravách terénu do opětovného stavu.",
+      },
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        author: { "@type": "Person", name: "Václav Klimeš" },
+        reviewBody:
+          "S firmou Petr Vodička jsem byl velmi spokojen. Skvěle odvedená práce, profesionální přístup a výborná komunikace. Firmu mohu jen doporučit!",
+      },
+    ],
   },
   {
     "@context": "https://schema.org",

@@ -4,6 +4,7 @@ import Ticker from "@/components/Ticker";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
 import Projects from "@/components/Projects";
+import Reviews from "@/components/Reviews";
 import Process from "@/components/Process";
 import Gallery from "@/components/Gallery";
 import CTA from "@/components/CTA";
@@ -19,6 +20,7 @@ export default function Home() {
         <Services />
         <Process />
         <Projects />
+        <Reviews />
         <Gallery />
         <CTA />
       </main>

@@ -2,25 +2,28 @@ import type { MetadataRoute } from 'next'
 
 const base = 'https://bagr-vykopy.cz'
 
+const cities = [
+  'vykopove-prace-havirov',
+  'vykopove-prace-ostrava',
+  'vykopove-prace-frydek-mistek',
+  'vykopove-prace-karvina',
+  'vykopove-prace-trinec',
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date('2026-07-17')
   return [
     {
       url: base,
-      lastModified: new Date('2026-07-17'),
+      lastModified,
       changeFrequency: 'monthly',
       priority: 1,
     },
-    {
-      url: `${base}/vykopove-prace-havirov`,
-      lastModified: new Date('2026-07-17'),
-      changeFrequency: 'monthly',
+    ...cities.map((slug) => ({
+      url: `${base}/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
       priority: 0.9,
-    },
-    {
-      url: `${base}/vykopove-prace-ostrava`,
-      lastModified: new Date('2026-07-17'),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
+    })),
   ]
 }
