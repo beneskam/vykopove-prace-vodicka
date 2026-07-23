@@ -10,8 +10,15 @@ const cities = [
   'vykopove-prace-trinec',
 ]
 
+const services = [
+  'zemni-a-vykopove-prace',
+  'vodovodni-a-kanalizacni-pripojky',
+  'demolice-domu-a-chaty',
+  'terenni-upravy-pozemku',
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date('2026-07-17')
+  const lastModified = new Date('2026-07-21')
   return [
     {
       url: base,
@@ -20,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...cities.map((slug) => ({
+      url: `${base}/${slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
+    ...services.map((slug) => ({
       url: `${base}/${slug}`,
       lastModified,
       changeFrequency: 'monthly' as const,
