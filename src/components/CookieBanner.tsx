@@ -13,6 +13,11 @@ function applyConsent(granted: boolean) {
       analytics_storage: granted ? "granted" : "denied",
     });
   }
+  // Generic hook for any other marketing/retargeting script (e.g. Sklik) —
+  // listen for this instead of loading unconditionally on page load.
+  window.dispatchEvent(
+    new CustomEvent("marketing-consent-changed", { detail: { granted } })
+  );
 }
 
 export default function CookieBanner() {
