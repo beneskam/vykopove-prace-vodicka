@@ -148,7 +148,7 @@ const services = [
   {
     num: "03",
     title: "Terénní úpravy a\u00A0Dlažby",
-    desc: "Modelování terénu, násypy a\u00A0zpevněné plochy, zámkové dlažby, příjezdové cesty.",
+    desc: "Modelování terénu, násypy a\u00A0zpevněné plochy, příprava terénu pro zámkové dlažby, příjezdové cesty.",
     dark: false,
     Icon: IconTerrain,
   },

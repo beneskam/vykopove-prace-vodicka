@@ -235,7 +235,7 @@ export default function Footer() {
                 "Vodovodní přípojky",
                 "Demolice",
                 "Terénní úpravy",
-                "Zámkové dlažby",
+                "Příprava terénu pro zámkové dlažby",
               ].map((service) => (
                 <a
                   key={service}

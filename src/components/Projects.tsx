@@ -75,7 +75,8 @@ const smallProjects = [
   },
   {
     num: "02",
-    title: "Kanalizační přípojka a\u00A0zámková dlažba — RD Frýdek-Místek",
+    title:
+      "Kanalizační přípojka a\u00A0příprava terénu pro zámkové dlažby — RD Frýdek-Místek",
     badge: "Přípojky",
     badgeColor: "#2563eb",
     badgeBg: "#ebf5ff",

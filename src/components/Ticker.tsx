@@ -6,7 +6,7 @@ const items = [
   "Kanalizační přípojky",
   "Vodovodní přípojky",
   "Terénní úpravy",
-  "Zámkové dlažby",
+  "Příprava terénu pro zámkové dlažby",
   "Demolice",
   "Moravskoslezský kraj",
 ];

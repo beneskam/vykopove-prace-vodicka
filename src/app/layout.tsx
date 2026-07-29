@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     "vodovodní přípojky",
     "demolice",
     "terénní úpravy",
-    "zámková dlažba",
+    "příprava terénu pro zámkové dlažby",
     "bagr",
     "výkop základů",
     "zemní práce cena",
